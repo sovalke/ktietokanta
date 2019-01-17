@@ -17,4 +17,4 @@ OMINAISUUKSIA
 
 KÄYTETTÄVÄT TIETOKANTATAULUT
 
-![Tietokantakaavio](Jalostuskartta.png)
+![Tietokantakaavio](/master/Jalostuskartta.png)
