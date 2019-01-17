@@ -21,4 +21,4 @@ KÄYTETTÄVÄT TIETOKANTATAULUT
 
 HEROKUSSA
 
-(https://ktietokanta.herokuapp.com)
+https://ktietokanta.herokuapp.com
