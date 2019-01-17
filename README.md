@@ -13,3 +13,4 @@ OMINAISUUKSIA
 - Hakutoiminnot:
   - hae eläintä tai pentuetta kasvattajan, syntymäajan tai alueen mukaan
   - hae kasvattajaa nimen tai alueen mukaan
+
