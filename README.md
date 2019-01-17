@@ -18,3 +18,7 @@ OMINAISUUKSIA
 KÄYTETTÄVÄT TIETOKANTATAULUT
 
 [Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/Jalostuskartta2.png)
+
+HEROKUSSA
+
+(https://ktietokanta.herokuapp.com)
