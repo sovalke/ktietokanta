@@ -17,4 +17,4 @@ OMINAISUUKSIA
 
 KÄYTETTÄVÄT TIETOKANTATAULUT
 
-[[https://github.com/sovalke/ktietokanta/blob/master/Jalostuskartta2.png|alt=Tietokantakaavio]]
+[Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/Jalostuskartta2.png)
