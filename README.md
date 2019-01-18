@@ -11,8 +11,8 @@ OMINAISUUKSIA
 - Eläimen lisääminen, muokkaaminen ja poistaminen
 - Kasvattajan omien tietojen muokkaaminen
 - Hakutoiminnot:
-  - hae eläintä tai pentuetta kasvattajan, syntymäajan tai alueen mukaan
-  - hae kasvattajaa nimen tai alueen mukaan
+  - hae eläintä tai pentuetta kasvattajan, syntymäajan, rodun tai alueen mukaan
+  - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
 
 
 KÄYTETTÄVÄT TIETOKANTATAULUT
