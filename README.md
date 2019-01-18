@@ -9,7 +9,7 @@ OMINAISUUKSIA
 - Kirjautuminen
 - Pentueen lisääminen, muokkaaminen ja poistaminen
 - Eläimen lisääminen, muokkaaminen ja poistaminen
-- Kasvattajan omien tietojen muokkaaminen
+- Kasvattajan omien tietojen muokkaaminen (yhteystiedot, kasvatettavat rodut)
 - Hakutoiminnot:
   - hae eläintä tai pentuetta kasvattajan, syntymäajan, rodun tai alueen mukaan
   - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
