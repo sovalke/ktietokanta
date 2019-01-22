@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('rotu_lomake') }}">
+  <input type="text" name="nimi"/>
+  <input type="text" name="linja"/>
+  <input type="submit" value="Lisää rotu"/>
+</form>
+{% endblock %}

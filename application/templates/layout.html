@@ -2,13 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TodoApplication</title>
+    <title>Mahtava kasvattajatietokanta</title>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" type="text/css">
   </head>
   
   <body>
     <ul>
-<li><a href="{{ url_for('tasks_index') }}">List tasks</a></li>
-<li><a href="{{ url_for('tasks_form') }}">Add a task</a></li>
+<li><a href="{{ url_for('rotu_index') }}">Rotulistaukseen</a></li>
+<li><a href="{{ url_for('rotu_lisaa') }}">Lisää uusi rotu</a></li>
+<li><a href="{{ url_for('rotu_muokkaus_index') }}">Muokkaa rotuja</a></li>
     </ul>
     
     {% block body %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <table>
+    <tr>
+      <th>Rotu</th>
+      <th>Linja</th>
+    </tr>
+    {% for rotu in rodut %}
+    
+    <tr>
+      <td>
+          {{ rotu.nimi }}
+      </td>
+      <td>
+          {{ rotu.linja }}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
