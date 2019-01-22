@@ -17,7 +17,7 @@ OMINAISUUKSIA
 
 KÄYTETTÄVÄT TIETOKANTATAULUT
 
-[Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/Jalostuskartta4.png)
+[Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/images/Jalostuskartta4.png)
 
 HEROKUSSA
 
