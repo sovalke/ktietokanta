@@ -114,4 +114,4 @@ venv.bak/
 dmypy.json
 
 # Pyre type checker
-.pyre/tasks.db
+.pyre/ktietokanta.db
