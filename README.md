@@ -4,7 +4,7 @@ Kasvattajatietokanta on palvelu, jonka avulla voi tallentaa tiedot rotueläinten
 Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat sisäänkirjautuneina lisätä tietokantaan uusia eläimiä ja pentueita sekä muuttaa omia tietojaan. Lisäksi kasvattajat pystyvät määrittämään eläinten keskinäisiä sukulaisuussuhteita (mikä eläin on pentueen isä ja mikä emä) ja korjaamaan muita tietoja (esim. väritys). Kasvattajan hallintapaneelissa myös näkyvät erillisenä listauksena kaikki kasvattajan jalostuseläimet ja tuotetut pentueet.
 
 
-###Ominaisuuksia
+### Ominaisuuksia
 - Rekisteröityminen
 - Kirjautuminen
 - Pentueen lisääminen, muokkaaminen ja poistaminen
@@ -14,7 +14,7 @@ Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat si
   - hae eläintä tai pentuetta kasvattajan, syntymäajan, rodun tai alueen mukaan
   - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
 
-###Linkit
+### Linkit
 
 [Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
 
