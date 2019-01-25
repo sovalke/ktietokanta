@@ -14,15 +14,10 @@ OMINAISUUKSIA
   - hae eläintä tai pentuetta kasvattajan, syntymäajan, rodun tai alueen mukaan
   - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
 
-
-KÄYTETTÄVÄT TIETOKANTATAULUT
+LINKIT
 
 [Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
 
-USER STORYT
+[User storyt](https://github.com/sovalke/ktietokanta/blob/master/documentation/User_storyt.md)
 
-https://github.com/sovalke/ktietokanta/blob/master/documentation/User_storyt.md
-
-HEROKUSSA
-
-https://ktietokanta.herokuapp.com
+[Sovellusdemo Herokussa](https://ktietokanta.herokuapp.com)
