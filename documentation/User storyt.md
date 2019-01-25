@@ -8,6 +8,7 @@
 - Kasvattajana voin lisätä uuden rodun tietokannasta kasvattajaprofiiliini.
 - Kasvattajana voin lisätä uusia eläimiä ja pentueita palveluun.
 - Kasvattajana voin muokata ja poistaa itse lisäämiäni eläimiä ja pentueita.
+- Kasvattajana voin myös käyttää samoja hakutoimintoja kuin vierailijana.
 
 ### Vierailijana
 
