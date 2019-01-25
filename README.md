@@ -19,6 +19,9 @@ KÄYTETTÄVÄT TIETOKANTATAULUT
 
 [Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
 
+USER STORYT
+[User storyt](https://github.com/sovalke/ktietokanta/documentation/User storyt.md)
+
 HEROKUSSA
 
 https://ktietokanta.herokuapp.com
