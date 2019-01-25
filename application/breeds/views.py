@@ -33,11 +33,15 @@ def rotu_muokkaa(rotu_id):
     t.linja = request.form.get("linja")
     db.session().commit()
   
-    return redirect(url_for("rotu_muokkaus_index"))
+    return redirect(url_for("rotu_index"))
 
-@app.route("/rodut/muokkaa", methods=["GET"])
-def rotu_muokkaus_index():
-    return render_template("breeds/rotulista_muokkaus.html", rodut = Rotu.query.all())
+@app.route("/rodut/muokkaa/<rotu_id>/", methods=["GET"])
+def rotu_muokkaa_yksi(rotu_id):
+
+    t = Rotu.query.get(rotu_id)
+  
+    return render_template("breeds/rotu_muokkaus_yksi.html", rotu=t)
+
 
 @app.route("/rodut", methods=["GET"])
 def rotu_index():

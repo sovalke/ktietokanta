@@ -16,6 +16,14 @@
       <td>
           {{ rotu.linja }}
       </td>
+      <td>
+        <a href="{{ url_for('rotu_muokkaa_yksi', rotu_id=rotu.id) }}">Muokkaa</a>
+      </td>
+      <td>
+          <form method="POST" action="{{ url_for('rotu_poista', rotu_id=rotu.id) }}">
+              <input type="submit" value="Poista" />
+          </form>
+      </td>
     </tr>
     {% endfor %}
   </table>
