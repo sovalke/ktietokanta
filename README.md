@@ -20,7 +20,8 @@ KÄYTETTÄVÄT TIETOKANTATAULUT
 [Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
 
 USER STORYT
-https://github.com/sovalke/ktietokanta/documentation/User_storyt.md
+
+https://github.com/sovalke/ktietokanta/blob/master/documentation/User_storyt.md
 
 HEROKUSSA
 
