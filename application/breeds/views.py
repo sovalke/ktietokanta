@@ -3,13 +3,16 @@ from flask import redirect, render_template, request, url_for
 from application.breeds.models import Rotu
 from sqlalchemy import update
 from application.breeds.forms import BreedForm
+from flask_login import login_required
 
 
 @app.route("/rodut/lisaa/")
+@login_required
 def rotu_lomake():
     return render_template("breeds/lisaarotu.html", form = BreedForm())
 
 @app.route("/rodut/lisaa/", methods=["POST"])
+@login_required
 def rotu_lisaa():
     form = BreedForm(request.form)
 
@@ -24,6 +27,7 @@ def rotu_lisaa():
     return redirect(url_for("rotu_index"))
 
 @app.route("/rodut/poista<rotu_id>/", methods=["POST"])
+@login_required
 def rotu_poista(rotu_id):
     poistettava = Rotu.query.get(rotu_id)
     db.session.delete(poistettava)
@@ -32,6 +36,7 @@ def rotu_poista(rotu_id):
     return redirect(url_for("rotu_index"))
 
 @app.route("/rodut/<rotu_id>/", methods=["POST"])
+@login_required
 def rotu_muokkaa(rotu_id):
     form = BreedForm(request.form)
     t = Rotu.query.get(rotu_id)
@@ -46,10 +51,11 @@ def rotu_muokkaa(rotu_id):
     return redirect(url_for("rotu_index"))
 
 @app.route("/rodut/muokkaa/<rotu_id>/", methods=["GET"])
+@login_required
 def rotu_muokkaa_yksi(rotu_id):
     form = BreedForm(request.form)
     t = Rotu.query.get(rotu_id)
-    
+
     if request.method == 'GET':
         form.nimi.data = t.nimi
         form.linja.data = t.linja
