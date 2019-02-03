@@ -4,20 +4,36 @@
 
 
 <form method="POST" action="{{ url_for('rotu_muokkaa', rotu_id=rotu.id) }}">
-<table>
-    <th>Rotu</th>
-    <tr>
-        <td><input type="text" name="nimi" value="{{ rotu.nimi }}" /></td>
 
-    </tr>
-    <th>Linja</th>
-    <tr>
-        <td><input type="text" name="linja" value="{{ rotu.linja }}" /></td>
-    </tr>
-    <tr>
-        <td><input type="submit" value="Päivitä rodun tiedot" /></td>
-    </tr>
-</table>
+    <table>
+        <th>{{ form.nimi.label }}</th>
+        <tr>
+            <td>{{ form.nimi }}</td>
+            <td>
+                <ul>
+                    {% for error in form.nimi.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <th>{{ form.linja.label }}</th>
+        <tr>
+            <td>{{ form.linja }}</td>
+            <td>
+                <ul>
+                    {% for error in form.linja.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Päivitä rodun tiedot" /></td>
+        </tr>
+    </table>
+
+
 </form>
 
 {% endblock %}
