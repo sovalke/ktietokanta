@@ -26,6 +26,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
 MANIFEST
 
 # PyInstaller
@@ -116,3 +117,6 @@ dmypy.json
 # Pyre type checker
 .pyre/ktietokanta.db
 *.db
+
+# Yksittäiset tiedostot
+
