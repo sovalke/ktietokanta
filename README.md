@@ -14,6 +14,10 @@ Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat si
   - hae eläintä tai pentuetta kasvattajan, syntymäajan, rodun tai alueen mukaan
   - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
 
+### Testitunnukset Herokun sovellukseen
+- Käyttäjätunnus: hello
+- Salasana: world
+
 ### Linkit
 
 [Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
