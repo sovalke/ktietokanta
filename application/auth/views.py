@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_user, logout_user
 
 from application import app
 from application.auth.models import User
@@ -17,6 +18,12 @@ def auth_login():
         return render_template("auth/kirjautuminen.html", form = form,
                                error = "Salasana tai käyttäjätunnus on väärä")
 
-
+    login_user(user)
     print("Käyttäjä " + user.nimi + " tunnistettiin")
+    return redirect(url_for("index"))  
+
+
+@app.route("/auth/logout")
+def auth_logout():
+    logout_user()
     return redirect(url_for("index"))  
