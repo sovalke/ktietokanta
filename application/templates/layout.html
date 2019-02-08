@@ -11,16 +11,20 @@
   <ul>
     <li><a href="{{ url_for('rotu_index') }}">Rotulistaukseen</a></li>
     <li><a href="{{ url_for('elain_index') }}">Eläinlistaukseen</a></li>
-    <li><a href="{{ url_for('rotu_lisaa') }}">Lisää uusi rotu</a></li>
-    <li><a href="{{ url_for('elain_lisaa') }}">Lisää uusi eläin</a></li>
+    <li><a href="{{ url_for('kasvattaja_index') }}">Kasvattajalistaukseen</a></li>
   </ul>
 
   {% if current_user.is_authenticated %}
   <p>
-    Olet kirjautunut nimellä {{ current_user.nimi }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+    Olet kirjautunut käyttäjänimellä {{ current_user.nimi }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
   </p>
+  <ul>
+    <li><a href="{{ url_for('rotu_lisaa') }}">Lisää uusi rotu</a></li>
+    <li><a href="{{ url_for('elain_lisaa') }}">Lisää uusi eläin</a></li>
+  </ul>
   {% else %}
-  <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
+  <a href="{{ url_for('auth_login') }}">Kirjaudu</a><br />
+  <a href="{{ url_for('kasvattaja_lisaa') }}">Rekisterödy</a>
   {% endif %}
 
   {% block body %}

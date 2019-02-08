@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <table>
+    <tr>
+      <th>Kasvattajanimi</th>
+    </tr>
+    {% for kasvattaja in kasvattajat %}
+    
+    <tr>
+      <td>
+          {{ kasvattaja.nimi }}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
