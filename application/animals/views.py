@@ -23,7 +23,14 @@ def elain_lisaa():
     if not form.validate():
         return render_template("animals/lisaaelain.html", form = form)
 
-    t = Elain(request.form.get("nimi"), request.form.get("sukupuoli"), request.form.get("varitys"))
+    print( request.form )
+
+    t = Elain(
+        request.form.get("nimi"),
+        request.form.get("sukupuoli"),
+        request.form.get("varitys"),
+        request.form.get("rotu_id")
+    )
 
     db.session().add(t)
     db.session().commit()

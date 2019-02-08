@@ -13,15 +13,3 @@ class Rotu(Base):
     def __init__(self, nimi, linja):
         self.nimi = nimi
         self.linja = linja
-
-
-@staticmethod
-def listaa_rodut():
-    stmt = text("SELECT Rotu.id, Rotu.nimi FROM Rotu")
-    res = db.engine.execute(stmt)
-
-    response = []
-    for row in res:
-        response.append({"id": row[0], "nimi": row[1]})
-
-    return response
