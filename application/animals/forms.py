@@ -12,7 +12,7 @@ class AnimalForm(FlaskForm):
     varitys = StringField("Väritys", [validators.Length(max=200)])    
     
     rotu_id = SelectField( u'Valitse rotu tästä', 
-        choices = [(g.nimi, g.id) for g in Rotu.query.order_by('nimi')]
+        choices = [(g.id, g.id) for g in Rotu.query.order_by('nimi')]
     )
 
     class Meta:
