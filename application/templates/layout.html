@@ -9,24 +9,44 @@
 </head>
 
 <body>
-  <ul>
-    <li><a href="{{ url_for('rotu_index') }}">Rotulistaukseen</a></li>
-    <li><a href="{{ url_for('elain_index') }}">Eläinlistaukseen</a></li>
-    <li><a href="{{ url_for('kasvattaja_index') }}">Kasvattajalistaukseen</a></li>
-  </ul>
 
-  {% if current_user.is_authenticated %}
-  <p>
-    Olet kirjautunut käyttäjänimellä {{ current_user.nimi }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
-  </p>
-  <ul>
-    <li><a href="{{ url_for('rotu_lisaa') }}">Lisää uusi rotu</a></li>
-    <li><a href="{{ url_for('elain_lisaa') }}">Lisää uusi eläin</a></li>
-  </ul>
-  {% else %}
-  <a href="{{ url_for('auth_login') }}">Kirjaudu</a><br />
-  <a href="{{ url_for('kasvattaja_lisaa') }}">Rekisterödy</a>
-  {% endif %}
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="#">Kasvattajatietokanta</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('rotu_index') }} ">Rotulistaus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('elain_index') }} ">Eläinlistaus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('kasvattaja_index') }} ">Kasvattajalistaus</a>
+        </li>
+
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('rotu_lisaa') }}">Lisää rotu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('elain_lisaa') }}">Lisää eläin</a>
+        </li>
+        {% else %}
+        {% endif %}
+      </ul>
+      <div class="form-inline mt-2 mt-md-0">
+        {% if current_user.is_authenticated %}
+        Hei {{ current_user.name }}!  <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+        {% else %}
+        <a href="{{ url_for('auth_login') }}">Kirjaudu sisään</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
 
   {% block body %}
   <p>
