@@ -2,23 +2,31 @@
 
 {% block body %}
 
-  <table>
+<table>
     <tr>
-      <th>Eläimen nimi</th>
-      <th>Sukupuoli</th>
+        <th>Eläimen nimi</th>
+        <th>Kasvattaja</th>
+        <th>Sukupuoli</th>
+        <th>Väritys</th>
     </tr>
-    
+
     {% for elain in elaimet %}
-    
+
     <tr>
-      <td>
-          {{ elain.nimi }}
-      </td>
-      <td>
-          {{ elain.sukupuoli }}
-      </td>
+        <td>
+            {{ elain.nimi }}
+        </td>
+        <td>
+            {{ elain.kasvattaja }}
+        </td>
+        <td>
+            {{ elain.sukupuoli }}
+        </td>
+        <td>
+            {{ elain.varitys }}
+        </td>
     </tr>
     {% endfor %}
-  </table>
+</table>
 
 {% endblock %}
