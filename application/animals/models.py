@@ -10,10 +10,12 @@ class Elain(Base):
     sukupuoli = db.Column(db.String(144), nullable=False)
     varitys = db.Column(db.String(144), nullable=False)
     rotu_id = db.Column(db.Integer, db.ForeignKey('rotu.id'),
-                           nullable=False)
+                           nullable=True)
 
-    def __init__(self, nimi):
+    def __init__(self, nimi, sukupuoli, varitys):
         self.nimi = nimi
+        self.sukupuoli = sukupuoli
+        self.varitys = varitys
   
     def get_id(self):
         return self.id

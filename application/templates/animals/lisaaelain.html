@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('elain_lomake') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.nimi.label }}
+      </td>
+      <td>
+        {{ form.nimi }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.nimi.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.sukupuoli.label }}
+      </td>
+      <td>
+        {{ form.sukupuoli }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.sukupuoli.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          {{ form.varitys.label }}
+        </td>
+        <td>
+          {{ form.varitys }}
+        </td>
+        <td>
+          <ul>
+            {% for error in form.varitys.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ form.kasvattaja.label }}
+        </td>
+        <td>
+          {{ form.kasvattaja }}
+        </td>
+        <td>
+          <ul>
+            {% for error in form.kasvattaja.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="Lisää eläin" />
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
