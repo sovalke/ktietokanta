@@ -27,4 +27,9 @@ def elain_lisaa():
     db.session().add(t)
     db.session().commit()
   
-    return redirect(url_for("rotu_index"))
+    return redirect(url_for("elain_index"))
+
+
+@app.route("/elaimet", methods=["GET"])
+def elain_index():
+    return render_template("animals/elainlista.html", elaimet = Elain.query.all())
