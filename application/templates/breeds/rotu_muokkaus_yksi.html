@@ -4,34 +4,34 @@
 
 
 <form method="POST" action="{{ url_for('rotu_muokkaa', rotu_id=rotu.id) }}">
+    <div class="form-group row">
+        {{ form.nimi.label(class_="col-sm-2 col-form-label") }}
+        <div class="col-sm-10">
+        {{ form.nimi(class_="form-control") }}
+        </div>
 
-    <table>
-        <th>{{ form.nimi.label }}</th>
-        <tr>
-            <td>{{ form.nimi }}</td>
-            <td>
-                <ul>
-                    {% for error in form.nimi.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            </td>
-        </tr>
-        <th>{{ form.linja.label }}</th>
-        <tr>
-            <td>{{ form.linja }}</td>
-            <td>
-                <ul>
-                    {% for error in form.linja.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="Päivitä rodun tiedot" /></td>
-        </tr>
-    </table>
+        <ul>
+            {% for error in form.nimi.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="form-group row">
+        {{ form.linja.label(class_="col-sm-2 col-form-label") }}
+        <div class="col-sm-10">
+        {{ form.linja(class_="form-control") }}
+        </div>
+
+        <ul>
+            {% for error in form.linja.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="form-group col-sm-10 row">
+        <input type="submit" value="Päivitä rodun tiedot" class="btn" />
+    </div>
+
 
 
 </form>
