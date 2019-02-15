@@ -2,74 +2,57 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('elain_lomake') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.nimi.label }}
-      </td>
-      <td>
-        {{ form.nimi }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.nimi.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.sukupuoli.label }}
-      </td>
-      <td>
-        {{ form.sukupuoli }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.sukupuoli.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-        <td>
-          {{ form.varitys.label }}
-        </td>
-        <td>
-          {{ form.varitys }}
-        </td>
-        <td>
-          <ul>
-            {% for error in form.varitys.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ form.rotu_id.label }}
-        </td>
-        <td>
-          {{ form.rotu_id }}
-        </td>
-        <td>
-          <ul>
-            {% for error in form.rotu_id.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        </td>
-      </tr>
-    <tr>
-      <td></td>
-      <td>
-        <input type="submit" value="Lisää eläin" />
-      </td>
-    </tr>
-  </table>
+  <div class="form-group row">
+    {{ form.nimi.label(class_="col-sm-2 col-form-label") }}
+    <div class="col-sm-10">
+      {{ form.nimi(class_="form-control") }}
+    </div>
+
+    <ul>
+      {% for error in form.nimi.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group row">
+    {{ form.sukupuoli.label(class_="col-sm-2 col-form-label") }}
+    <div class="col-sm-10">
+      {{ form.sukupuoli(class_="form-control") }}
+    </div>
+
+    <ul>
+      {% for error in form.sukupuoli.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group row">
+    {{ form.varitys.label(class_="col-sm-2 col-form-label") }}
+    <div class="col-sm-10">
+      {{ form.varitys(class_="form-control") }}
+    </div>
+
+    <ul>
+      {% for error in form.varitys.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group row">
+    {{ form.rotu_id.label(class_="col-sm-2 col-form-label") }}
+    <div class="col-sm-10">
+      {{ form.rotu_id(class_="form-control") }}
+    </div>
+
+    <ul>
+      {% for error in form.rotu_id.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group col-sm-10 row">
+    <input type="submit" value="Lisää eläin" class="btn" />
+  </div>
 </form>
 
 {% endblock %}

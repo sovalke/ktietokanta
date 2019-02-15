@@ -2,43 +2,31 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('rotu_lomake') }}">
-  <table>
-    <tr>
-      <td>
-        {{ form.nimi.label }}
-      </td>
-      <td>
-        {{ form.nimi }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.nimi.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{ form.linja.label }}
-      </td>
-      <td>
-        {{ form.linja }}
-      </td>
-      <td>
-        <ul>
-          {% for error in form.linja.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <input type="submit" value="Lisää rotu" />
-      </td>
-    </tr>
-  </table>
+  <div class="form-group row">
+    {{ form.nimi.label(class_="col-sm-2 col-form-label") }}
+    <div class="col-sm-10">
+      {{ form.nimi }}
+    </div>
+    <ul>
+      {% for error in form.nimi.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group row">
+    {{ form.linja.label(class_="col-sm-2 col-form-label") }}
+    <div class="col-sm-10">
+      {{ form.linja }}
+    </div>
+    <ul>
+      {% for error in form.linja.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group col-sm-10 row">
+    <input type="submit" value="Lisää rotu" class="btn" />
+  </div>
+
 </form>
 {% endblock %}
