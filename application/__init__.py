@@ -1,4 +1,6 @@
 from flask import Flask
+from sqlalchemy.sql import text
+
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
@@ -40,6 +42,9 @@ try:
     db.create_all()
 except:
     pass
+
+stmt = text("INSERT INTO kasvattaja (nimi, username, password, yhteyshlo) VALUES ('hello world', 'hello', 'world', 'John Smith')")
+db.engine.execute(stmt)
 
 from application.creatures import models 
 from application.creatures import views
