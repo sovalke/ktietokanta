@@ -43,9 +43,6 @@ try:
 except:
     pass
 
-stmt = text("INSERT INTO kasvattaja (nimi, username, password, yhteyshlo) VALUES ('hello world', 'hello', 'world', 'John Smith')")
-db.engine.execute(stmt)
-
 from application.creatures import models 
 from application.creatures import views
 
@@ -53,3 +50,11 @@ try:
     db.create_all()
 except:
     pass
+
+# Luodaan demotunnus
+stmt = text("SELECT COUNT(*) FROM Kasvattaja")
+res = db.engine.execute(stmt).scalar()
+
+if res == 0:
+    stmt = text("INSERT INTO kasvattaja (nimi, username, password, yhteyshlo) VALUES ('hello world', 'hello', 'world', 'John Smith')")
+    res = db.engine.execute(stmt)
