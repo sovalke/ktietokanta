@@ -5,12 +5,20 @@
   <table>
     <tr>
       <th>Kasvattajanimi</th>
+      <th>Yhteyshenkilö</th>
+      <th>Puhelinnumero</th>
     </tr>
     {% for kasvattaja in kasvattajat %}
     
     <tr>
       <td>
-          {{ kasvattaja.nimi }}
+        {{ kasvattaja.nimi }}
+      </td>
+      <td>
+        {{ kasvattaja.yhteyshlo }}
+      </td>
+      <td>
+        {{ kasvattaja.puh }}
       </td>
     </tr>
     {% endfor %}
