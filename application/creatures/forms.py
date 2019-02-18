@@ -17,10 +17,5 @@ class CreatureForm(FlaskForm):
         coerce=int
     )
 
-    kasvattaja = SelectField( u'Kasvattaja', 
-        choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')],
-        coerce=int
-    )
-
     class Meta:
         csrf = False
