@@ -10,10 +10,15 @@ class LoginForm(FlaskForm):
 
 
 class BreederForm(FlaskForm):
+    nimi = StringField("Kasvattajanimi")
     username = StringField("Käyttäjätunnus")
     password = PasswordField("Salasana")
-    nimi = StringField("Kasvattajanimi")
-    admin = BooleanField(false_values=None)
+    yhteyshlo = StringField("Yhteyshenkilö")
+    puh = StringField("Puhelinnumero")
+    email = StringField("Sähköpostiosoite")
+    osoite = StringField("Katuosoite")
+    postinro = StringField("Postinumero")
+    toimipaikka = StringField("Postitoimipaikka")
 
     class Meta:
         csrf = False
