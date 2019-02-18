@@ -26,20 +26,20 @@ def rotu_lisaa():
   
     return redirect(url_for("rotu_index"))
 
-@app.route("/rodut/poista<rotu_id>/", methods=["POST"])
+@app.route("/rodut/poista<rotu>/", methods=["POST"])
 @login_required
-def rotu_poista(rotu_id):
-    poistettava = Rotu.query.get(rotu_id)
+def rotu_poista(rotu):
+    poistettava = Rotu.query.get(rotu)
     db.session.delete(poistettava)
     db.session().commit()
   
     return redirect(url_for("rotu_index"))
 
-@app.route("/rodut/<rotu_id>/", methods=["POST"])
+@app.route("/rodut/<rotu>/", methods=["POST"])
 @login_required
-def rotu_muokkaa(rotu_id):
+def rotu_muokkaa(rotu):
     form = BreedForm(request.form)
-    t = Rotu.query.get(rotu_id)
+    t = Rotu.query.get(rotu)
     t.nimi = request.form.get("nimi")
     t.linja = request.form.get("linja")
 
@@ -50,11 +50,11 @@ def rotu_muokkaa(rotu_id):
   
     return redirect(url_for("rotu_index"))
 
-@app.route("/rodut/muokkaa/<rotu_id>/", methods=["GET"])
+@app.route("/rodut/muokkaa/<rotu>/", methods=["GET"])
 @login_required
-def rotu_muokkaa_yksi(rotu_id):
+def rotu_muokkaa_yksi(rotu):
     form = BreedForm(request.form)
-    t = Rotu.query.get(rotu_id)
+    t = Rotu.query.get(rotu)
 
     if request.method == 'GET':
         form.nimi.data = t.nimi

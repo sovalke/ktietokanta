@@ -29,7 +29,7 @@ def elain_lisaa():
         request.form.get("nimi"),
         request.form.get("sukupuoli"),
         request.form.get("varitys"),
-        request.form.get("rotu_id")
+        request.form.get("rotu")
     )
 
     db.session().add(t)

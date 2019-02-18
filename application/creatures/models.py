@@ -9,14 +9,14 @@ class Elain(Base):
     nimi = db.Column(db.String(144), nullable=False)
     sukupuoli = db.Column(db.String(144), nullable=False)
     varitys = db.Column(db.String(144), nullable=False)
-    rotu_id = db.Column(db.Integer, db.ForeignKey('rotu.id'),
+    rotu = db.Column(db.Integer, db.ForeignKey('rotu.id'),
                            nullable=True)
 
-    def __init__(self, nimi, sukupuoli, varitys, rotu_id):
+    def __init__(self, nimi, sukupuoli, varitys, rotu):
         self.nimi = nimi
         self.sukupuoli = sukupuoli
         self.varitys = varitys
-        self.rotu_id = rotu_id
+        self.rotu = rotu
   
     def get_id(self):
         return self.id
