@@ -3,7 +3,6 @@ from wtforms import StringField, validators, SelectField
 from application import db
 from sqlalchemy.sql import text
 from application.breeds.models import Rotu
-from application.auth.models import User
 
 
 class CreatureForm(FlaskForm):

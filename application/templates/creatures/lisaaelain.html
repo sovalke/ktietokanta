@@ -50,18 +50,7 @@
       {% endfor %}
     </ul>
   </div>
-  <div class="form-group row">
-    {{ form.kasvattaja.label(class_="col-sm-2 col-form-label") }}
-    <div class="col-sm-10">
-      {{ form.kasvattaja(class_="form-control") }}
-    </div>
 
-    <ul>
-      {% for error in form.kasvattaja.errors %}
-      <li>{{ error }}</li>
-      {% endfor %}
-    </ul>
-  </div>
   <div class="form-group col-sm-10 row">
     <input type="submit" value="Lisää eläin" class="btn" />
   </div>
