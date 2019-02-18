@@ -13,7 +13,7 @@ class User(Base):
     puh = db.Column(db.String(144), nullable=False)
     email= db.Column(db.String(144), nullable=False)
     osoite = db.Column(db.String(200), nullable=False)
-    postinumero = db.Column(db.String(5), nullable=False)
+    postinro = db.Column(db.String(5), nullable=False)
     toimipaikka = db.Column(db.String(144), nullable=False)
 
     def __init__(self, nimi, username, password, email):

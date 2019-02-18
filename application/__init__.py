@@ -17,10 +17,10 @@ db = SQLAlchemy(app)
 from application import views
 from application.breeds import models
 from application.breeds import views
-from application.animals import models 
-from application.animals import views
 from application.auth import models 
 from application.auth import views
+from application.creatures import models 
+from application.creatures import views
 
 # Kirjautuminen
 from application.auth.models import User
@@ -39,6 +39,6 @@ def load_user(user_id):
     return User.query.get(user_id)
   
 try: 
-    db.create_all()
+    db.create_all
 except:
     pass
