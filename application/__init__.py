@@ -19,8 +19,6 @@ from application.auth import models
 from application.auth import views
 from application.breeds import models
 from application.breeds import views
-from application.creatures import models 
-from application.creatures import views
 
 # Kirjautuminen
 from application.auth.models import User
@@ -38,6 +36,14 @@ login_manager.login_message = "Kirjaudu sisään, jotta voit käyttää tätä t
 def load_user(user_id):
     return User.query.get(user_id)
   
+try: 
+    db.create_all()
+except:
+    pass
+
+from application.creatures import models 
+from application.creatures import views
+
 try: 
     db.create_all()
 except:
