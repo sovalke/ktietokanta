@@ -9,18 +9,19 @@ class User(Base):
     nimi = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
-    yhteyshlo = db.Column(db.String(144), nullable=False)
-    puh = db.Column(db.String(144), nullable=False)
-    email= db.Column(db.String(144), nullable=False)
-    osoite = db.Column(db.String(200), nullable=False)
-    postinro = db.Column(db.String(5), nullable=False)
-    toimipaikka = db.Column(db.String(144), nullable=False)
+    yhteyshlo = db.Column(db.String(144), nullable=True)
+    puh = db.Column(db.String(144), nullable=True)
+    email= db.Column(db.String(144), nullable=True)
+    osoite = db.Column(db.String(200), nullable=True)
+    postinro = db.Column(db.String(5), nullable=True)
+    toimipaikka = db.Column(db.String(144), nullable=True)
 
-    def __init__(self, nimi, username, password, email):
+    def __init__(self, nimi, username, password, yhteyshlo):
         self.nimi = nimi
         self.username = username
         self.password = password
-        self.email = email
+        self.yhteyshlo = yhteyshlo
+
   
     def get_id(self):
         return self.id
