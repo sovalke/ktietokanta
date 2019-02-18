@@ -40,7 +40,7 @@ def kasvattaja_lisaa():
     if not form.validate():
         return render_template("auth/lisaakasvattaja.html", form = form)
 
-    t = User(request.form.get("nimi"), request.form.get("username"), request.form.get("password"), request.form.get("admin"))
+    t = User(request.form.get("nimi"), request.form.get("username"), request.form.get("password"), request.form.get("email"))
 
     db.session().add(t)
     db.session().commit()

@@ -16,10 +16,11 @@ class User(Base):
     postinumero = db.Column(db.String(5), nullable=False)
     toimipaikka = db.Column(db.String(144), nullable=False)
 
-    def __init__(self, nimi, username, password):
+    def __init__(self, nimi, username, password, email):
         self.nimi = nimi
         self.username = username
         self.password = password
+        self.email = email
   
     def get_id(self):
         return self.id
