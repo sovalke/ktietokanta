@@ -4,6 +4,7 @@ from application.creatures.models import Elain
 from application.breeds.models import Rotu
 from sqlalchemy import update
 from flask_login import login_required
+from sqlalchemy.sql import text
 
 from application import app
 from application.auth.models import User
@@ -40,4 +41,6 @@ def elain_lisaa():
 
 @app.route("/elaimet", methods=["GET"])
 def elain_index():
-    return render_template("creatures/elainlista.html", elaimet = Elain.query.all())
+    stmt = text("SELECT Elain.id, Elain.nimi, Elain.sukupuoli, Elain.varitys, Rotu.id AS rotu_id, Rotu.nimi AS rotu_nimi, Rotu.linja FROM Elain, Rotu WHERE Elain.rotu = Rotu.id")
+    res = db.engine.execute(stmt)
+    return render_template("creatures/elainlista.html", elaimet = res)

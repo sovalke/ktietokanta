@@ -23,6 +23,7 @@ def rotu_lisaa():
 
     db.session().add(t)
     db.session().commit()
+    db.session().flush()
   
     return redirect(url_for("rotu_index"))
 
