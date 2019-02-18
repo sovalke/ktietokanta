@@ -13,3 +13,6 @@ class Rotu(Base):
     def __init__(self, nimi, linja):
         self.nimi = nimi
         self.linja = linja
+
+    def get_nimi(self):
+        return self.nimi

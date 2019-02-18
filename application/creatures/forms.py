@@ -3,6 +3,7 @@ from wtforms import StringField, validators, SelectField
 from application import db
 from sqlalchemy.sql import text
 from application.breeds.models import Rotu
+from application.auth.models import User
 
 
 class CreatureForm(FlaskForm):
@@ -13,6 +14,11 @@ class CreatureForm(FlaskForm):
     
     rotu = SelectField( u'Rotu', 
         choices = [(g.id, g.nimi) for g in Rotu.query.order_by('nimi')],
+        coerce=int
+    )
+
+    kasvattaja = SelectField( u'Kasvattaja', 
+        choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')],
         coerce=int
     )
 
