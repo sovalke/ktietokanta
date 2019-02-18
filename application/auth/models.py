@@ -7,15 +7,19 @@ class User(Base):
   
     id = db.Column(db.Integer, primary_key=True)
     nimi = db.Column(db.String(144), nullable=False)
-    admin = db.Column(db.Boolean)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+    yhteyshlo = db.Column(db.String(144), nullable=False)
+    puh = db.Column(db.String(144), nullable=False)
+    email= db.Column(db.String(144), nullable=False)
+    osoite = db.Column(db.String(200), nullable=False)
+    postinumero = db.Column(db.String(5), nullable=False)
+    toimipaikka = db.Column(db.String(144), nullable=False)
 
-    def __init__(self, nimi, username, password, admin):
+    def __init__(self, nimi, username, password):
         self.nimi = nimi
         self.username = username
         self.password = password
-        self.admin = admin
   
     def get_id(self):
         return self.id

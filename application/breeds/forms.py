@@ -5,8 +5,8 @@ from application import db
 
 
 class BreedForm(FlaskForm):
-    nimi = StringField("Rodun nimi", [validators.Length(min=2, max=200)])
-    linja = StringField("Jalostuslinja", [validators.Length(max=200)])
+    nimi = StringField("Rodun nimi", [validators.Length(min=2, max=144)])
+    linja = StringField("Jalostuslinja", [validators.Length(max=144)])
 
     class Meta:
         csrf = False
