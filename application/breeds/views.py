@@ -1,18 +1,20 @@
-from application import app, db
-from flask import redirect, render_template, request, url_for
-from application.breeds.models import Rotu
+from application import app, db, login_required
+from flask import render_template, request, redirect, url_for
+from flask_login import current_user
+
 from sqlalchemy import update
+
 from application.breeds.forms import BreedForm
-from flask_login import login_required
+from application.breeds.models import Rotu
 
 
 @app.route("/rodut/lisaa/")
-@login_required
+@login_required(role="ADMIN")
 def rotu_lomake():
     return render_template("breeds/lisaarotu.html", form = BreedForm())
 
 @app.route("/rodut/lisaa/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def rotu_lisaa():
     form = BreedForm(request.form)
 
@@ -28,7 +30,7 @@ def rotu_lisaa():
     return redirect(url_for("rotu_index"))
 
 @app.route("/rodut/poista<rotu>/", methods=["POST"])
-@login_required
+@login_required()
 def rotu_poista(rotu):
     poistettava = Rotu.query.get(rotu)
     db.session.delete(poistettava)
@@ -37,7 +39,7 @@ def rotu_poista(rotu):
     return redirect(url_for("rotu_index"))
 
 @app.route("/rodut/<rotu>/", methods=["POST"])
-@login_required
+@login_required()
 def rotu_muokkaa(rotu):
     form = BreedForm(request.form)
     t = Rotu.query.get(rotu)
@@ -52,7 +54,7 @@ def rotu_muokkaa(rotu):
     return redirect(url_for("rotu_index"))
 
 @app.route("/rodut/muokkaa/<rotu>/", methods=["GET"])
-@login_required
+@login_required()
 def rotu_muokkaa_yksi(rotu):
     form = BreedForm(request.form)
     t = Rotu.query.get(rotu)
