@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <table>
+    <tr>
+      <th>Pentueen nimi</th>
+      <th>Kasvattaja</th>
+    </tr>
+    {% for pentue in pentueet %}
+    
+    <tr>
+      <td>
+          {{ pentue.nimi }}
+      </td>
+      <td>
+          {{ pentue.kasvattaja }}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
