@@ -19,13 +19,16 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('rotu_index') }} ">Rotulistaus</a>
+          <a class="nav-link" href="{{ url_for('rotu_index') }} ">Rodut</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('elain_index') }} ">Eläinlistaus</a>
+          <a class="nav-link" href="{{ url_for('elain_index') }} ">Rekisterin eläimet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('kasvattaja_index') }} ">Kasvattajalistaus</a>
+          <a class="nav-link" href="{{ url_for('kasvattaja_index') }} ">Kasvattajat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pentue_index') }} ">Pentueet</a>
         </li>
 
         {% if current_user.is_authenticated %}
