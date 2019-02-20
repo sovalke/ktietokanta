@@ -14,7 +14,14 @@ class LitterForm(FlaskForm):
         choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')],
         coerce=int
     )
-
+#    isa = SelectField( u'Isä', 
+#        choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')],
+#        coerce=int
+#    )
+#    ema = SelectField( u'Emä', 
+#        choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')],
+#        coerce=int
+#    )
 
 
     class Meta:
