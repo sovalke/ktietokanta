@@ -12,12 +12,12 @@ from application.auth.forms import LoginForm
 from application.litters.forms import LitterForm
 
 @app.route("/pentueet/lisaa/")
-@login_required
+@login_required()
 def pentue_lomake():
-    return render_template("litter/lisaaelain.html", form = LitterForm())
+    return render_template("litter/lisaapentue.html", form = LitterForm())
 
 @app.route("/pentueet/lisaa/", methods=["POST"])
-@login_required
+@login_required()
 def pentue_lisaa():
     form = LitterForm(request.form)
 

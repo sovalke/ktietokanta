@@ -12,12 +12,12 @@ from application.auth.forms import LoginForm
 from application.animals.forms import AnimalForm
 
 @app.route("/elaimet/lisaa/")
-@login_required
+@login_required()
 def elain_lomake():
     return render_template("animals/lisaaelain.html", form = AnimalForm())
 
 @app.route("/elaimet/lisaa/", methods=["POST"])
-@login_required
+@login_required()
 def elain_lisaa():
     form = AnimalForm(request.form)
 
