@@ -5,6 +5,7 @@ from application.animals.models import Elain
 from application.breeds.models import Rotu
 from application.litters.models import Pentue
 from sqlalchemy import update
+from sqlalchemy.sql import text
 
 from application import app
 from application.auth.models import User
@@ -44,4 +45,6 @@ def pentue_lisaa():
 
 @app.route("/pentueet", methods=["GET"])
 def pentue_index():
-    return render_template("litters/pentuelista.html", pentueet = Pentue.query.all())
+    stmt = text("SELECT Pentue.id, Pentue.nimi, Pentue.kasvattaja AS kasvattaja_id, Pentue.syntynyt, Kasvattaja.id, Kasvattaja.nimi AS kasvattaja_nimi FROM Pentue, Kasvattaja WHERE Pentue.kasvattaja = Kasvattaja.id")
+    res = db.engine.execute(stmt)
+    return render_template("litters/pentuelista.html", pentueet = res)
