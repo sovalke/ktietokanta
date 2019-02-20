@@ -11,10 +11,12 @@ from application.auth.models import User
 from application.auth.forms import LoginForm
 from application.litters.forms import LitterForm
 
+from datetime import datetime, date
+
 @app.route("/pentueet/lisaa/")
 @login_required()
 def pentue_lomake():
-    return render_template("litter/lisaapentue.html", form = LitterForm())
+    return render_template("litters/lisaapentue.html", form = LitterForm())
 
 @app.route("/pentueet/lisaa/", methods=["POST"])
 @login_required()
@@ -26,9 +28,11 @@ def pentue_lisaa():
 
     print( request.form )
 
+    pvm = datetime.strptime(request.form.get("syntynyt"), '%Y-%m-%d').date()
+
     t = Pentue(
         request.form.get("nimi"),
-        request.form.get("syntynyt"),
+        pvm,
         request.form.get("kasvattaja")
     )
 
