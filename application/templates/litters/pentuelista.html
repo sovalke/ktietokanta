@@ -6,6 +6,7 @@
     <tr>
       <th>Pentueen nimi</th>
       <th>Kasvattaja</th>
+      <th>Syntynyt</th>
     </tr>
     {% for pentue in pentueet %}
     
@@ -15,6 +16,9 @@
       </td>
       <td>
           {{ pentue.kasvattaja }}
+      </td>
+      <td>
+        {{ pentue.syntynyt }}
       </td>
     </tr>
     {% endfor %}

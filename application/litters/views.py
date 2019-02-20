@@ -28,7 +28,7 @@ def pentue_lisaa():
 
     print( request.form )
 
-    pvm = datetime.strptime(request.form.get("syntynyt"), '%Y-%m-%d').date()
+    pvm = datetime.strptime(request.form.get("syntynyt"), '%d.%m.%Y').date()
 
     t = Pentue(
         request.form.get("nimi"),

@@ -9,7 +9,7 @@ from application.animals.models import Elain
 
 class LitterForm(FlaskForm):
     nimi = StringField("Pentueen nimi", [validators.Length(min=2, max=200)])
-    syntynyt = DateField("Syntymäaika", format='%Y-%m-%d', validators=[DataRequired(message="Anna syntymäpäivä muodossa vvvv-kk-pp")])    
+    syntynyt = DateField("Syntymäaika", format='%d.%m.%Y', validators=[DataRequired(message="Anna syntymäpäivä muodossa pp.kk.vv")])    
     
     kasvattaja = SelectField( u'Kasvattaja', 
         choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')],
