@@ -7,12 +7,13 @@ from sqlalchemy import update
 from application.breeds.forms import BreedForm
 from application.breeds.models import Rotu
 
-
+# Vain ylläpitäjä voi lisätä uusia rotuja.
 @app.route("/rodut/lisaa/")
 @login_required(role="ADMIN")
 def rotu_lomake():
     return render_template("breeds/lisaarotu.html", form = BreedForm())
 
+# Vain ylläpitäjä voi lisätä uusia rotuja.
 @app.route("/rodut/lisaa/", methods=["POST"])
 @login_required(role="ADMIN")
 def rotu_lisaa():
@@ -28,8 +29,9 @@ def rotu_lisaa():
   
     return redirect(url_for("rotu_index"))
 
+# Vain ylläpitäjä voi poistaa uusia rotuja.
 @app.route("/rodut/poista<rotu>/", methods=["POST"])
-@login_required()
+@login_required(role="ADMIN")
 def rotu_poista(rotu):
     poistettava = Rotu.query.get(rotu)
     db.session.delete(poistettava)
@@ -37,8 +39,9 @@ def rotu_poista(rotu):
   
     return redirect(url_for("rotu_index"))
 
+# Vain ylläpitäjä voi muokata rotuja.
 @app.route("/rodut/<rotu>/", methods=["POST"])
-@login_required()
+@login_required(role="ADMIN")
 def rotu_muokkaa(rotu):
     form = BreedForm(request.form)
     t = Rotu.query.get(rotu)
@@ -52,8 +55,9 @@ def rotu_muokkaa(rotu):
   
     return redirect(url_for("rotu_index"))
 
+# Vain ylläpitäjä voi muokata rotuja.
 @app.route("/rodut/muokkaa/<rotu>/", methods=["GET"])
-@login_required()
+@login_required(role="ADMIN")
 def rotu_muokkaa_yksi(rotu):
     form = BreedForm(request.form)
     t = Rotu.query.get(rotu)
