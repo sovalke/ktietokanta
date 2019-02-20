@@ -14,13 +14,16 @@ from application.animals.models import Elain
 @app.route("/elaimet/lisaa/")
 @login_required()
 def elain_lomake():
-    return render_template("animals/lisaaelain.html", form = AnimalForm())
+    form = AnimalForm()
+    form.rotu.choices = [(g.id, g.nimi) for g in Rotu.query.order_by('nimi')]
+
+    return render_template("animals/lisaaelain.html", form = form)
 
 @app.route("/elaimet/lisaa/", methods=["POST"])
 @login_required()
 def elain_lisaa():
     form = AnimalForm(request.form)
-
+    form.rotu.choices = [(g.id, g.nimi) for g in Rotu.query.order_by('nimi')]
     if not form.validate():
         return render_template("animals/lisaaelain.html", form = form)
 

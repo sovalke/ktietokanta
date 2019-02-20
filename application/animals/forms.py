@@ -11,10 +11,7 @@ class AnimalForm(FlaskForm):
                             ('uros', 'uros'), ('naaras', 'naaras')])
     varitys = StringField("Väritys", [validators.Length(max=200)])    
     
-    rotu = SelectField( u'Rotu', 
-        choices = [(g.id, g.nimi) for g in Rotu.query.order_by('nimi')],
-        coerce=int
-    )
+    rotu = SelectField( u'Rotu', coerce=int)
 
 # Tähän tulee viite pentueeseen.
 

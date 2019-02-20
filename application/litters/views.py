@@ -17,12 +17,18 @@ from datetime import datetime, date
 @app.route("/pentueet/lisaa/")
 @login_required()
 def pentue_lomake():
-    return render_template("litters/lisaapentue.html", form = LitterForm())
+    form = LitterForm()
+
+    form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
+
+    return render_template("litters/lisaapentue.html", form = form)
 
 @app.route("/pentueet/lisaa/", methods=["POST"])
 @login_required()
 def pentue_lisaa():
     form = LitterForm(request.form)
+
+    form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
 
     if not form.validate():
         return render_template("litters/lisaapentue.html", form = form)
@@ -48,3 +54,4 @@ def pentue_index():
     stmt = text("SELECT Pentue.id, Pentue.nimi, Pentue.kasvattaja AS kasvattaja_id, Pentue.syntynyt, Kasvattaja.id, Kasvattaja.nimi AS kasvattaja_nimi FROM Pentue, Kasvattaja WHERE Pentue.kasvattaja = Kasvattaja.id")
     res = db.engine.execute(stmt)
     return render_template("litters/pentuelista.html", pentueet = res)
+

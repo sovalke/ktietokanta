@@ -29,7 +29,7 @@ def rotu_lisaa():
   
     return redirect(url_for("rotu_index"))
 
-# Vain ylläpitäjä voi poistaa uusia rotuja.
+# Vain ylläpitäjä voi poistaa rotuja.
 @app.route("/rodut/poista<rotu>/", methods=["POST"])
 @login_required(role="ADMIN")
 def rotu_poista(rotu):
