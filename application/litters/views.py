@@ -1,6 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from application.creatures.models import Elain
+from application.animals.models import Elain
 from application.breeds.models import Rotu
 from application.litters.models import Pentue
 from sqlalchemy import update
@@ -9,16 +9,16 @@ from flask_login import login_required
 from application import app
 from application.auth.models import User
 from application.auth.forms import LoginForm
-# from application.litters.forms import LitterForm
+from application.litters.forms import LitterForm
 
 @app.route("/pentueet/lisaa/")
 @login_required
-def elain_lomake():
+def pentue_lomake():
     return render_template("litter/lisaaelain.html", form = LitterForm())
 
 @app.route("/pentueet/lisaa/", methods=["POST"])
 @login_required
-def elain_lisaa():
+def pentue_lisaa():
     form = LitterForm(request.form)
 
     if not form.validate():
@@ -40,5 +40,5 @@ def elain_lisaa():
 
 
 @app.route("/pentueet", methods=["GET"])
-def elain_index():
+def pentue_index():
     return render_template("litters/pentuelista.html", pentueet = Pentue.query.all())

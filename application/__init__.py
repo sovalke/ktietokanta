@@ -45,6 +45,8 @@ except:
 
 from application.animals import models 
 from application.animals import views
+from application.litters import views
+from application.litters import models
 
 try: 
     db.create_all()
