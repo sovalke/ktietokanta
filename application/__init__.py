@@ -67,7 +67,7 @@ stmt = text("SELECT COUNT(*) FROM Rotu")
 res = db.engine.execute(stmt).scalar()
 
 if res == 0:
-    stmt = text("INSERT INTO rotu (nimi, linja) VALUES ('tuntematon', 'tuntematon')")
+    stmt = text("INSERT INTO rotu (nimi, linja) VALUES ('määrittelemätön', '')")
     res = db.engine.execute(stmt)
 
 # Luodaan ensimmäiset rivit tauluun pentue
@@ -83,5 +83,5 @@ stmt = text("SELECT COUNT(*) FROM Elain")
 res = db.engine.execute(stmt).scalar()
 
 if res == 0:
-    stmt = text("INSERT INTO elain (nimi, sukupuoli, varitys) VALUES ('tuntematon', 'tuntematon', 'tuntematon')")
+    stmt = text("INSERT INTO elain (nimi, sukupuoli, varitys, rotu) VALUES ('Testieläin', 'naaras', 'tuntematon', '1')")
     res = db.engine.execute(stmt)
