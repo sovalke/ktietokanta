@@ -43,6 +43,7 @@ try:
 except:
     pass
 
+# Taulut, jotka vaativat muiden taulujen olemassaoloa
 from application.animals import models 
 from application.animals import views
 from application.litters import views
@@ -59,4 +60,28 @@ res = db.engine.execute(stmt).scalar()
 
 if res == 0:
     stmt = text("INSERT INTO kasvattaja (nimi, username, password, yhteyshlo) VALUES ('hello world', 'hello', 'world', 'John Smith')")
+    res = db.engine.execute(stmt)
+
+# Luodaan ensimmäiset rivit tauluun rotu
+stmt = text("SELECT COUNT(*) FROM Rotu")
+res = db.engine.execute(stmt).scalar()
+
+if res == 0:
+    stmt = text("INSERT INTO rotu (nimi, linja) VALUES ('tuntematon', 'tuntematon')")
+    res = db.engine.execute(stmt)
+
+# Luodaan ensimmäiset rivit tauluun pentue
+stmt = text("SELECT COUNT(*) FROM Pentue")
+res = db.engine.execute(stmt).scalar()
+
+if res == 0:
+    stmt = text("INSERT INTO pentue (nimi) VALUES ('tuntematon')")
+    res = db.engine.execute(stmt)
+
+# Luodaan ensimmäiset rivit tauluun elain
+stmt = text("SELECT COUNT(*) FROM Elain")
+res = db.engine.execute(stmt).scalar()
+
+if res == 0:
+    stmt = text("INSERT INTO elain (nimi, sukupuoli, varitys) VALUES ('tuntematon', 'tuntematon', 'tuntematon')")
     res = db.engine.execute(stmt)

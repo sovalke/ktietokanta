@@ -5,8 +5,6 @@ class User(Base):
 
     __tablename__ = "kasvattaja"
   
-    id = db.Column(db.Integer, primary_key=True)
-    nimi = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
     yhteyshlo = db.Column(db.String(144), nullable=True)

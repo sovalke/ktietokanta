@@ -5,8 +5,6 @@ class Pentue(Base):
 
     __tablename__ = "pentue"
   
-    id = db.Column(db.Integer, primary_key=True)
-    nimi = db.Column(db.String(144), nullable=False)
     syntynyt = db.Column(db.Date)
     kasvattaja = db.Column(db.Integer, db.ForeignKey('kasvattaja.id'),
                            nullable=True)

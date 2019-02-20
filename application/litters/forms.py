@@ -15,5 +15,7 @@ class LitterForm(FlaskForm):
         coerce=int
     )
 
+
+
     class Meta:
         csrf = False
