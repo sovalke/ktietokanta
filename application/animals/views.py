@@ -1,15 +1,15 @@
-from application import app, db
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
-from application.animals.models import Elain
-from application.breeds.models import Rotu
 from sqlalchemy import update
-from flask_login import login_required
+from flask_login import current_user
 from sqlalchemy.sql import text
 
 from application import app
+from application.breeds.models import Rotu
 from application.auth.models import User
 from application.auth.forms import LoginForm
 from application.animals.forms import AnimalForm
+from application.animals.models import Elain
 
 @app.route("/elaimet/lisaa/")
 @login_required()

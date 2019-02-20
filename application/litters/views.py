@@ -1,10 +1,10 @@
-from application import app, db
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
+from flask_login import current_user
 from application.animals.models import Elain
 from application.breeds.models import Rotu
 from application.litters.models import Pentue
 from sqlalchemy import update
-from flask_login import login_required
 
 from application import app
 from application.auth.models import User
@@ -26,11 +26,10 @@ def pentue_lisaa():
 
     print( request.form )
 
-    t = Elain(
+    t = Pentue(
         request.form.get("nimi"),
-        request.form.get("sukupuoli"),
-        request.form.get("varitys"),
-        request.form.get("rotu")
+        request.form.get("syntynyt"),
+        request.form.get("kasvattaja")
     )
 
     db.session().add(t)

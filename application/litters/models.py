@@ -13,9 +13,10 @@ class Pentue(Base):
     ema = db.Column(db.Integer, db.ForeignKey('elain.id'),
                            nullable=True)
 
-    def __init__(self, nimi, syntynyt):
+    def __init__(self, nimi, syntynyt, kasvattaja):
         self.nimi = nimi
         self.syntynyt = syntynyt
+        self.kasvattaja = kasvattaja
   
     def get_id(self):
         return self.id
