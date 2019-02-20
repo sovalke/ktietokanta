@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 from application.breeds.models import Rotu
 
 
-class CreatureForm(FlaskForm):
+class AnimalForm(FlaskForm):
     nimi = StringField("Eläimen nimi", [validators.Length(min=2, max=200)])
     sukupuoli = SelectField(u'Sukupuoli', choices=[
                             ('uros', 'uros'), ('naaras', 'naaras')])

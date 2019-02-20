@@ -1,6 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from application.creatures.models import Elain
+from application.animals.models import Elain
 from application.breeds.models import Rotu
 from sqlalchemy import update
 from flask_login import login_required
@@ -9,20 +9,20 @@ from sqlalchemy.sql import text
 from application import app
 from application.auth.models import User
 from application.auth.forms import LoginForm
-from application.creatures.forms import CreatureForm
+from application.animals.forms import AnimalForm
 
 @app.route("/elaimet/lisaa/")
 @login_required
 def elain_lomake():
-    return render_template("creatures/lisaaelain.html", form = CreatureForm())
+    return render_template("animals/lisaaelain.html", form = AnimalForm())
 
 @app.route("/elaimet/lisaa/", methods=["POST"])
 @login_required
 def elain_lisaa():
-    form = CreatureForm(request.form)
+    form = AnimalForm(request.form)
 
     if not form.validate():
-        return render_template("creatures/lisaaelain.html", form = form)
+        return render_template("animals/lisaaelain.html", form = form)
 
     print( request.form )
 
@@ -43,4 +43,4 @@ def elain_lisaa():
 def elain_index():
     stmt = text("SELECT Elain.id, Elain.nimi, Elain.sukupuoli, Elain.varitys, Rotu.id AS rotu_id, Rotu.nimi AS rotu_nimi, Rotu.linja FROM Elain, Rotu WHERE Elain.rotu = Rotu.id")
     res = db.engine.execute(stmt)
-    return render_template("creatures/elainlista.html", elaimet = res)
+    return render_template("animals/elainlista.html", elaimet = res)

@@ -43,8 +43,8 @@ try:
 except:
     pass
 
-from application.creatures import models 
-from application.creatures import views
+from application.animals import models 
+from application.animals import views
 
 try: 
     db.create_all()
