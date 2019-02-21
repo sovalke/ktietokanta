@@ -10,7 +10,7 @@ from sqlalchemy.sql import text
 from application import app
 from application.auth.models import User
 from application.auth.forms import LoginForm
-from application.litters.forms import LitterForm
+from application.litters.forms import LitterForm, PupForm
 
 from datetime import datetime, date
 
@@ -40,11 +40,22 @@ def pentue_lisaa():
     pvm = datetime.strptime(request.form.get("syntynyt"), '%d.%m.%Y').date()
 
     t = Pentue(request.form.get("nimi"), pvm, request.form.get("kasvattaja"), request.form.get("isa"), request.form.get("ema"))
-
+    t.pennut.append(Elain.query.get(1))
     db.session().add(t)
     db.session().commit()
   
     return redirect(url_for("pentue_index"))
+
+#@app.route("/pentueet/<id>/lisaapentu/")
+#@login_required()
+#def pentu_lomake(id):
+#    form = PupForm()
+#    form.pentu.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+#    return render_template("litters/lisaapentu.html", pentue = Pentue.query.get(id), form = form)
+
+#    t.pennut.append(Elain.query.get(1))
+#    db.session().add(t)
+#    db.session().commit()
 
 
 @app.route("/pentueet", methods=["GET"])
@@ -57,6 +68,5 @@ def pentue_index():
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
     t = Pentue.query.get(pentue)
-    ema = Elain.query.get(t.ema)
-    isa = Elain.query.get(t.isa)
-    return render_template("litters/pentue.html", pentue = t, ema = ema, isa = isa)
+    return render_template("litters/pentue.html", pentue = t, ema = Elain.query.get(t.ema), isa = Elain.query.get(t.isa))
+

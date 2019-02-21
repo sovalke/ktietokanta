@@ -4,7 +4,7 @@ from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-association_table = Table('elainPentue', Base.metadata,
+association_table = Table('pennut', Base.metadata,
     Column('elain', Integer, ForeignKey('elain.id')),
     Column('pentue', Integer, ForeignKey('pentue.id'))
 )
