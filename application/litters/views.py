@@ -49,14 +49,14 @@ def pentue_lisaa():
 
 @app.route("/pentueet", methods=["GET"])
 def pentue_index():
-    stmt = text("SELECT Pentue.id, Pentue.nimi, Pentue.kasvattaja AS kasvattaja_id, Pentue.syntynyt, Kasvattaja.id, Kasvattaja.nimi AS kasvattaja_nimi FROM Pentue, Kasvattaja WHERE Pentue.kasvattaja = Kasvattaja.id")
+    stmt = text("SELECT Pentue.id, Pentue.nimi, Pentue.syntynyt, Kasvattaja.id as kasvattaja_id, Kasvattaja.nimi AS kasvattaja_nimi FROM Pentue, Kasvattaja WHERE Pentue.kasvattaja = Kasvattaja.id")
     res = db.engine.execute(stmt)
     return render_template("litters/pentuelista.html", pentueet = res)
 
 
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
-
     t = Pentue.query.get(pentue)
-
-    return render_template("litters/pentue.html", pentue = t)
+    ema = Elain.query.get(t.ema)
+    isa = Elain.query.get(t.isa)
+    return render_template("litters/pentue.html", pentue = t, ema = ema, isa = isa)

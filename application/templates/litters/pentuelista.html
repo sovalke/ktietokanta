@@ -4,22 +4,25 @@
 
   <table>
     <tr>
-      <th>Pentueen nimi</th>
+      <th>Pentue</th>
+      <th>Syntymäaika</th>
       <th>Kasvattaja</th>
-      <th>Syntynyt</th>
     </tr>
     {% for pentue in pentueet %}
     
     <tr>
       <td>
-          {{ pentue.nimi }}
+        <a href="{{ url_for('pentue_yksi', pentue=pentue.id)}}">{{ pentue.nimi }}</a>
       </td>
       <td>
-          {{ pentue.kasvattaja_nimi }}
+          {{ pentue.syntynyt }}
       </td>
       <td>
-        {{ pentue.syntynyt }}
+        {{ pentue.kasvattaja_nimi }}
       </td>
+      {% if current_user.is_authenticated %}
+
+        {% endif %}
     </tr>
     {% endfor %}
   </table>
