@@ -12,6 +12,5 @@ class LitterForm(FlaskForm):
     syntynyt = DateField("Syntymäaika", format='%d.%m.%Y', validators=[DataRequired(message="Anna syntymäpäivä muodossa pp.kk.vv")])    
     kasvattaja = SelectField( u'Kasvattaja', coerce=int)
 
-
     class Meta:
         csrf = False

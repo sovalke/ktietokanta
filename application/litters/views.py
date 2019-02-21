@@ -36,11 +36,7 @@ def pentue_lisaa():
 
     pvm = datetime.strptime(request.form.get("syntynyt"), '%d.%m.%Y').date()
 
-    t = Pentue(
-        request.form.get("nimi"),
-        pvm,
-        request.form.get("kasvattaja")
-    )
+    t = Pentue(request.form.get("nimi"), pvm, request.form.get("kasvattaja"))
 
     db.session().add(t)
     db.session().commit()
