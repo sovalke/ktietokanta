@@ -18,8 +18,8 @@ from datetime import datetime, date
 @login_required()
 def pentue_lomake():
     form = LitterForm()
-
     form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
+    form.isa.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
 
     return render_template("litters/lisaapentue.html", form = form)
 
@@ -27,7 +27,6 @@ def pentue_lomake():
 @login_required()
 def pentue_lisaa():
     form = LitterForm(request.form)
-
     form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
 
     if not form.validate():
