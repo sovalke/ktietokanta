@@ -13,7 +13,5 @@ class AnimalForm(FlaskForm):
     
     rotu = SelectField( u'Rotu', coerce=int)
 
-# Tähän tulee viite pentueeseen.
-
     class Meta:
         csrf = False

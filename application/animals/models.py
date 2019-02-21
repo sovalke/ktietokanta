@@ -9,8 +9,6 @@ class Elain(Base):
     varitys = db.Column(db.String(144), nullable=False)
     rotu = db.Column(db.Integer, db.ForeignKey('rotu.id'),
                            nullable=True)
-    pentue = db.Column(db.Integer, db.ForeignKey('pentue.id'),
-                           nullable=True)
 
     def __init__(self, nimi, sukupuoli, varitys, rotu):
         self.nimi = nimi
