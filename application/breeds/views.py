@@ -22,7 +22,7 @@ def rotu_lisaa():
     if not form.validate():
         return render_template("breeds/lisaarotu.html", form = form)
 
-    t = Rotu(request.form.get("nimi"), request.form.get("linja"))
+    t = Rotu(request.form.get("nimi"), request.form.get("linja"), request.form.get("kuvaus"))
 
     db.session().add(t)
     db.session().commit()
