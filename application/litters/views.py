@@ -53,3 +53,10 @@ def pentue_index():
     res = db.engine.execute(stmt)
     return render_template("litters/pentuelista.html", pentueet = res)
 
+
+@app.route("/pentueet/<pentue>/", methods=["GET"])
+def pentue_yksi(pentue):
+
+    t = Pentue.query.get(pentue)
+
+    return render_template("litters/pentue.html", pentue = t)
