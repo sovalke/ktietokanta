@@ -18,11 +18,17 @@ class Pentue(Base):
                            nullable=True)
     pennut = relationship("Elain",
                     secondary=association_table)
+    isa = db.Column(db.Integer, db.ForeignKey('elain.id'),
+                           nullable=True)
+    ema = db.Column(db.Integer, db.ForeignKey('elain.id'),
+                           nullable=True)
 
-    def __init__(self, nimi, syntynyt, kasvattaja):
+    def __init__(self, nimi, syntynyt, kasvattaja, isa, ema):
         self.nimi = nimi
         self.syntynyt = syntynyt
         self.kasvattaja = kasvattaja
+        self.isa = isa
+        self.ema = ema
 
     def get_id(self):
         return self.id

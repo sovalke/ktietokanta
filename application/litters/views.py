@@ -19,6 +19,8 @@ from datetime import datetime, date
 def pentue_lomake():
     form = LitterForm()
     form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
+    form.isa.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+    form.ema.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
 
     return render_template("litters/lisaapentue.html", form = form)
 
@@ -27,6 +29,8 @@ def pentue_lomake():
 def pentue_lisaa():
     form = LitterForm(request.form)
     form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
+    form.isa.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+    form.ema.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
 
     if not form.validate():
         return render_template("litters/lisaapentue.html", form = form)
@@ -35,7 +39,7 @@ def pentue_lisaa():
 
     pvm = datetime.strptime(request.form.get("syntynyt"), '%d.%m.%Y').date()
 
-    t = Pentue(request.form.get("nimi"), pvm, request.form.get("kasvattaja"))
+    t = Pentue(request.form.get("nimi"), pvm, request.form.get("kasvattaja"), request.form.get("isa"), request.form.get("ema"))
 
     db.session().add(t)
     db.session().commit()
