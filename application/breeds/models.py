@@ -3,7 +3,7 @@ from application.models import Base
 from sqlalchemy.sql import text
 
 class Rotu(Base):
-    __tablename__ = "Rotu"
+    __tablename__ = "rotu"
 
     linja = db.Column(db.String(144), nullable=False)
     kuvaus = db.Column(db.String(500))

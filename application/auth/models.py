@@ -3,7 +3,7 @@ from application.models import Base
 
 class User(Base):
 
-    __tablename__ = "Kasvattaja"
+    __tablename__ = "kasvattaja"
   
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)

@@ -3,7 +3,7 @@ from application.models import Base
 
 class Elain(Base):
 
-    __tablename__ = "Elain"
+    __tablename__ = "elain"
 
     sukupuoli = db.Column(db.String(144), nullable=False)
     varitys = db.Column(db.String(144), nullable=False)
