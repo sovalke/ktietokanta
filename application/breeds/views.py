@@ -47,6 +47,7 @@ def rotu_muokkaa(rotu):
     t = Rotu.query.get(rotu)
     t.nimi = request.form.get("nimi")
     t.linja = request.form.get("linja")
+    t.kuvaus = request.form.get("kuvaus")
 
     if not form.validate():
         return render_template("breeds/rotu_muokkaus_yksi.html", rotu = t, form = form)
