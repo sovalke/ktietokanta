@@ -12,15 +12,20 @@ Lataa ohjelma komentorivin kautta komennolla:
 >$ git clone https://github.com/sovalke/ktietokanta.git
 
 
-## Vaihe 2: Venv ja Flask
-Avaa lataamasi sovelluskansio (demo2).
+## Vaihe 2: Tarvittavat välineet
+Avaa lataamasi sovelluskansio (demo2). Varmista, että suoritat mahdolliset asennus- tai aktivointikomennot sovelluksen juuressa.
 
-Aktivoi seuraavaksi venv-virtuaaliympäristö komentorivin kautta komennolla:
+### Python ja pip
+Varmista, että koneellesi on asennettu Python (vähintään versio 3.5) ja siihen liittyvä pip. Voit tarvittaessa asentaa Pythonin osoitteesta https://www.python.org/downloads/. Pipin pitäisi asentua paketin mukana.
+
+### Venv
+Aktivoi Pythonin venv-virtuaaliympäristö komentorivin kautta komennolla:
 >source venv/bin/activate
 
 Jos koneellesi ei ole asennettu venv-ympäristöä, voit asentaa sen komennolla:
 >python3 -m venv venv
 
+### Flask
 Varmista seuraavaksi, että käytössäsi on Flask. Voit asentaa sen komennolla:
 >pip install Flask
 
@@ -28,7 +33,6 @@ Varmista seuraavaksi, että käytössäsi on Flask. Voit asentaa sen komennolla:
 Käynnistä ohjelma komennolla:
 >python3 run.py
 
-## Selainnäkymä
 Pääset nyt käyttämään sovellusta paikallisesti selaimen kautta. Sovelluksen osoite löytyy komentorivin tulosteesta:
 
 >(venv) ~/demo2$ python3 hello.py
@@ -36,7 +40,7 @@ Pääset nyt käyttämään sovellusta paikallisesti selaimen kautta. Sovellukse
 >* Restarting with stat
 >* Debugger is active!
 >* Debugger PIN: 231-450-049
->* Detected change in '/polku/demo/hello.py', reloading
+>* Detected change in '/polku/demo2/hello.py', reloading
 >* Restarting with stat
 >* Debugger is active!
->* Debugger PIN: 231-450-049
+>* Debugger PIN: 221-150-049
