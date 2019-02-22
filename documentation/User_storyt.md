@@ -17,5 +17,6 @@
 ### Ylläpitäjänä lisäksi...
 
 - Voin lisätä, muokata ja poistaa tietokannasta rotuja.
+- Voin poistaa pentueita.
 
 
