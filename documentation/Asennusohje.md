@@ -39,12 +39,12 @@ Käynnistä ohjelma komennolla:
 
 Pääset nyt käyttämään sovellusta paikallisesti selaimen kautta. Sovelluksen osoite löytyy komentorivin tulosteesta:
 
->(venv) ~/demo2$ python3 hello.py
+>(venv) ~/demo2$ python3 run.py
 >* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 >* Restarting with stat
 >* Debugger is active!
 >* Debugger PIN: 231-450-049
->* Detected change in '/polku/demo2/hello.py', reloading
+>* Detected change in '/polku/demo2/run.py', reloading
 >* Restarting with stat
 >* Debugger is active!
 >* Debugger PIN: 221-150-049
