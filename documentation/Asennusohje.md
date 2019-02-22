@@ -1,4 +1,4 @@
-# Yleinen asennusohje
+# Asennusohje
 
 ## Vaihe 1: valmistelut
 
