@@ -8,7 +8,7 @@
     <div class="form-group row">
         {{ form.nimi.label(class_="col-sm-2 col-form-label") }}
         <div class="col-sm-10">
-        {{ form.nimi(class_="form-control") }}
+            {{ form.nimi(class_="form-control") }}
         </div>
 
         <ul>
@@ -20,7 +20,7 @@
     <div class="form-group row">
         {{ form.syntynyt.label(class_="col-sm-2 col-form-label") }}
         <div class="col-sm-10">
-        {{ form.syntynyt(class_="form-control") }}
+            {{ form.syntynyt(class_="form-control") }}
         </div>
 
         <ul>
@@ -32,16 +32,39 @@
     <div class="form-group row">
         {{ form.kasvattaja.label(class_="col-sm-2 col-form-label") }}
         <div class="col-sm-10">
-          {{ form.kasvattaja(class_="form-control") }}
+            {{ form.kasvattaja(class_="form-control") }}
         </div>
-    
-        <ul>
-          {% for error in form.kasvattaja.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </div>
 
+        <ul>
+            {% for error in form.kasvattaja.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="form-group row">
+        {{ form.isa.label(class_="col-sm-2 col-form-label") }}
+        <div class="col-sm-10">
+            {{ form.isa(class_="form-control") }}
+        </div>
+
+        <ul>
+            {% for error in form.isa.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="form-group row">
+        {{ form.ema.label(class_="col-sm-2 col-form-label") }}
+        <div class="col-sm-10">
+            {{ form.ema(class_="form-control") }}
+        </div>
+
+        <ul>
+            {% for error in form.ema.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     <div class="form-group col-sm-10 row">
         <input type="submit" value="Päivitä pentueen tiedot" class="btn" />
     </div>
