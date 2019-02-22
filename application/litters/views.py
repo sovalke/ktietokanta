@@ -123,5 +123,6 @@ def pentue_index():
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
     t = Pentue.query.get(pentue)
+
     return render_template("litters/pentue.html", pentue = t, ema = Elain.query.get(t.ema), isa = Elain.query.get(t.isa), kasvattaja = User.query.get(t.kasvattaja))
 
