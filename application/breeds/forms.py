@@ -11,4 +11,3 @@ class BreedForm(FlaskForm):
 
     class Meta:
         csrf = False
-
