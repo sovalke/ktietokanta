@@ -19,8 +19,12 @@ Avaa lataamasi sovelluskansio (demo2). Varmista, että suoritat mahdolliset asen
 Varmista, että koneellesi on asennettu Python (vähintään versio 3.5) ja siihen liittyvä pip. Voit tarvittaessa asentaa Pythonin osoitteesta https://www.python.org/downloads/. Pipin pitäisi asentua paketin mukana.
 
 ### Venv
-Aktivoi Pythonin venv-virtuaaliympäristö komentorivin kautta komennolla:
+Aktivoi Pythonin asennuksen jälkeen venv-virtuaaliympäristö komentorivin kautta komennolla:
 >source venv/bin/activate
+
+Kun venv aktivoituu, sen nimi näkyy suluissa komentokehoitteessa:
+>~/demo2$ source venv/bin/activate
+>(venv) ~/demo2$
 
 Jos koneellesi ei ole asennettu venv-ympäristöä, voit asentaa sen komennolla:
 >python3 -m venv venv
