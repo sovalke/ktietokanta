@@ -14,7 +14,7 @@ Kaikki rekisteröitymällä luotavat käyttäjätunnukset ovat yleiskäyttäjän
 
 ## 2 Rekisteröityminen
 
-Rekisteröityminen suoritetaan painamalla ohjelman oikeassa yläkulmassa olevaa linkkiä "Rekisteröidy" ja täyttämällä avautuva lomake. Ainoastaan kolme ensimmäistä kohtaa (kasvattajanimi, käyttäjätunnus, salasana) ovat pakollisia. Muut voi halutessaan täydentää tunnuksen tietoihin myöhemmin.
+Rekisteröityminen suoritetaan painamalla ohjelman oikeassa yläkulmassa olevaa linkkiä "Rekisteröidy" ja täyttämällä avautuva lomake. Ainoastaan kolme ensimmäistä kohtaa (kasvattajanimi, käyttäjätunnus, salasana) ovat rekisteröitymisvaiheessa pakollisia. Muut voi halutessaan täydentää tunnuksen tietoihin rekisteröitymisen jälkeen.
 
 ## 3 Kirjautuminen
 
