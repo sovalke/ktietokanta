@@ -15,8 +15,12 @@ Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat si
   - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
 
 ### Testitunnukset Herokun sovellukseen
+#### Admin-tunnukset
 - Käyttäjätunnus: hello
 - Salasana: world
+#### Tavallisen kasvattajan tunnukset
+- Käyttäjätunnus: testing
+- Salasana: testing
 
 ### Linkit
 
