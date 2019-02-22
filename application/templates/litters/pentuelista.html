@@ -20,7 +20,7 @@
     <td>
       {{ pentue.kasvattaja_nimi }}
     </td>
-    {% if current_user.is_authenticated %}
+    {% if current_user.role == "ADMIN" %}
     <td>
       <form method="POST" action="{{ url_for('pentue_poista', pentue_id=pentue.id) }}">
         <input type="submit" value="Poista" class="btn" />
