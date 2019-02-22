@@ -31,4 +31,6 @@ Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat si
 
 [Asennusohje](https://github.com/sovalke/ktietokanta/blob/master/documentation/Asennusohje.md)
 
+[Käyttöohje](https://github.com/sovalke/ktietokanta/blob/master/documentation/Kaytto-ohje.md)
+
 [Sovellusdemo Herokussa](https://ktietokanta.herokuapp.com)
