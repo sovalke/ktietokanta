@@ -19,3 +19,6 @@ class LitterForm(FlaskForm):
 
 class PupForm(FlaskForm):
     pentu = SelectField( u'Pentu', coerce=int)
+
+    class Meta:
+        csrf = False

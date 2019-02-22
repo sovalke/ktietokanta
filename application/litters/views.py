@@ -85,16 +85,32 @@ def pentue_muokkaa_yksi(pentue):
 
     return render_template("litters/pentue_muokkaus.html", pentue=t, form = form)
 
-#@app.route("/pentueet/<id>/lisaapentu/")
-#@login_required()
-#def pentu_lomake(id):
-#    form = PupForm()
-#    form.pentu.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
-#    return render_template("litters/lisaapentu.html", pentue = Pentue.query.get(id), form = form)
+@app.route("/pentueet/<pentue>/lisaapentu/")
+@login_required()
+def pentu_lomake(pentue):
+    form = PupForm()
+    form.pentu.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+    return render_template("litters/lisaapentu.html", pentue = Pentue.query.get(pentue), form = form)
 
-#    t.pennut.append(Elain.query.get(1))
 #    db.session().add(t)
 #    db.session().commit()
+
+@app.route("/pentueet/<pentue>/lisaapentu/", methods=["POST"])
+@login_required()
+def pentu_lisaa(pentue):
+    form = PupForm(request.form)
+    form.pentu.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+
+    if not form.validate():
+        return render_template("litters/lisaapentu.html", form = form)
+
+    lisattava = request.form.get("pentu")
+    t = Pentue.query.get(pentue)
+    t.pennut.append(Elain.query.get(lisattava))
+
+    db.session().commit()
+  
+    return redirect(url_for("pentue_yksi", pentue = t.id))
 
 
 @app.route("/pentueet", methods=["GET"])
