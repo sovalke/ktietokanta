@@ -122,6 +122,15 @@ def pentu_lisaa(pentue):
   
     return redirect(url_for("pentue_yksi", pentue = t.id))
 
+# Vain ylläpitäjä voi poistaa pentueita.
+@app.route("/pentueet/poista<pentue_id>/", methods=["POST"])
+@login_required(role="ADMIN")
+def pentue_poista(pentue_id):
+    poistettava = Pentue.query.get(pentue_id)
+    db.session.delete(poistettava)
+    db.session().commit()
+  
+    return redirect(url_for("pentue_index"))
 
 @app.route("/pentueet", methods=["GET"])
 def pentue_index():

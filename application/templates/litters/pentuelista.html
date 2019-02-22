@@ -2,29 +2,33 @@
 
 {% block body %}
 
-  <table>
-    <tr>
-      <th>Pentue</th>
-      <th>Syntymäaika</th>
-      <th>Kasvattaja</th>
-    </tr>
-    {% for pentue in pentueet %}
-    
-    <tr>
-      <td>
-        <a href="{{ url_for('pentue_yksi', pentue=pentue.id)}}">{{ pentue.nimi }}</a>
-      </td>
-      <td>
-          {{ pentue.syntynyt }}
-      </td>
-      <td>
-        {{ pentue.kasvattaja_nimi }}
-      </td>
-      {% if current_user.is_authenticated %}
+<table>
+  <tr>
+    <th>Pentue</th>
+    <th>Syntymäaika</th>
+    <th>Kasvattaja</th>
+  </tr>
+  {% for pentue in pentueet %}
 
-        {% endif %}
-    </tr>
-    {% endfor %}
-  </table>
+  <tr>
+    <td>
+      <a href="{{ url_for('pentue_yksi', pentue=pentue.id)}}">{{ pentue.nimi }}</a>
+    </td>
+    <td>
+      {{ pentue.syntynyt }}
+    </td>
+    <td>
+      {{ pentue.kasvattaja_nimi }}
+    </td>
+    {% if current_user.is_authenticated %}
+    <td>
+      <form method="POST" action="{{ url_for('pentue_poista', pentue_id=pentue.id) }}">
+        <input type="submit" value="Poista" class="btn" />
+      </form>
+    </td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
 
 {% endblock %}
