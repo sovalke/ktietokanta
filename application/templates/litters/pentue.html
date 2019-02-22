@@ -14,4 +14,8 @@
 <p>{{ pentu.nimi }}</p>
 {% endfor %}
 
+{% if current_user.is_authenticated %}
+<p><a href="{{ url_for('pentu_lisaa', pentue=pentue.id) }}"">Lisää pentu</a></p>
+{% endif %}
+
 {% endblock %}
