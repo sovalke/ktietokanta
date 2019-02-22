@@ -66,10 +66,10 @@ from application.auth import views
 from application.breeds import models
 from application.breeds import views
 
-try:
-    db.create_all()
-except:
-    pass
+#try:
+#    db.create_all()
+#except:
+#    pass
 
 # Varsinaisen ohjelman tiedot jatkuvat
 from application.animals import models 
@@ -105,7 +105,7 @@ stmt = text("SELECT COUNT(*) FROM Rotu")
 res = db.engine.execute(stmt).scalar()
 
 if res == 0:
-    stmt = text("INSERT INTO rotu (nimi, linja) VALUES ('määrittelemätön', '')")
+    stmt = text("INSERT INTO rotu (nimi, linja, kuvaus) VALUES ('määrittelemätön', '', 'Satunnainen rotu, josta ei ole kunnon tietoja.')")
     res = db.engine.execute(stmt)
 
 # Luodaan ensimmäiset rivit tauluun pentue
