@@ -40,7 +40,7 @@ def pentue_lisaa():
     pvm = datetime.strptime(request.form.get("syntynyt"), '%d.%m.%Y').date()
 
     t = Pentue(request.form.get("nimi"), pvm, request.form.get("kasvattaja"), request.form.get("isa"), request.form.get("ema"))
-    t.pennut.append(Elain.query.get(1))
+
     db.session().add(t)
     db.session().commit()
   
@@ -51,6 +51,9 @@ def pentue_lisaa():
 @login_required()
 def pentue_muokkaa(pentue):
     form = LitterForm(request.form)
+    form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
+    form.isa.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+    form.ema.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
     t = Pentue.query.get(pentue)
 
     t.nimi = request.form.get("nimi")
@@ -58,6 +61,9 @@ def pentue_muokkaa(pentue):
     t.kasvattaja = request.form.get("kasvattaja")
     t.isa = request.form.get("isa")
     t.ema = request.form.get("ema")
+    pvm = datetime.strptime(request.form.get("syntynyt"), '%d.%m.%Y').date()
+
+    t.syntynyt = pvm
 
     if not form.validate():
         return render_template("litters/pentue_muokkaus.html", pentue = t, form = form)
@@ -71,6 +77,10 @@ def pentue_muokkaa(pentue):
 @login_required()
 def pentue_muokkaa_yksi(pentue):
     form = LitterForm(request.form)
+    form.kasvattaja.choices = [(g.id, g.nimi) for g in User.query.order_by('nimi')]
+    form.isa.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+    form.ema.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
+
     t = Pentue.query.get(pentue)
 
     if request.method == 'GET':
@@ -123,6 +133,5 @@ def pentue_index():
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
     t = Pentue.query.get(pentue)
-
     return render_template("litters/pentue.html", pentue = t, ema = Elain.query.get(t.ema), isa = Elain.query.get(t.isa), kasvattaja = User.query.get(t.kasvattaja))
 
