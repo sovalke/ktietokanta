@@ -46,6 +46,45 @@ def pentue_lisaa():
   
     return redirect(url_for("pentue_index"))
 
+# Vain kirjautunut käyttäjä voi muokata pentueita
+@app.route("/pentueet/<pentue>/muokkaa/", methods=["POST"])
+@login_required()
+def pentue_muokkaa(pentue):
+    form = LitterForm(request.form)
+    t = Pentue.query.get(pentue)
+
+    t.nimi = request.form.get("nimi")
+    t.syntynyt = request.form.get("syntynyt")
+    t.kasvattaja = request.form.get("kasvattaja")
+    t.isa = request.form.get("isa")
+    t.ema = request.form.get("ema")
+
+    if not form.validate():
+        return render_template("litters/pentue_muokkaus.html", pentue = t, form = form)
+
+    db.session().commit()
+  
+    return redirect(url_for("pentue_index"))
+
+# Vain kirjautunut käyttäjä voi muokata pentueita.
+@app.route("/pentueet/<pentue>/muokkaa/", methods=["GET"])
+@login_required()
+def pentue_muokkaa_yksi(pentue):
+    form = LitterForm(request.form)
+    t = Pentue.query.get(pentue)
+
+    if request.method == 'GET':
+        form.nimi.data = t.nimi
+        form.syntynyt.data = t.syntynyt
+        form.kasvattaja.data = t.kasvattaja
+        form.isa.data = t.isa
+        form.ema.data = t.ema
+
+    if not form.validate():
+        return render_template("litters/pentue_muokkaus.html", form = form, pentue = t)
+
+    return render_template("litters/pentue_muokkaus.html", pentue=t, form = form)
+
 #@app.route("/pentueet/<id>/lisaapentu/")
 #@login_required()
 #def pentu_lomake(id):
@@ -68,5 +107,5 @@ def pentue_index():
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
     t = Pentue.query.get(pentue)
-    return render_template("litters/pentue.html", pentue = t, ema = Elain.query.get(t.ema), isa = Elain.query.get(t.isa))
+    return render_template("litters/pentue.html", pentue = t, ema = Elain.query.get(t.ema), isa = Elain.query.get(t.isa), kasvattaja = User.query.get(t.kasvattaja))
 

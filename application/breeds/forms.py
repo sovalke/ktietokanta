@@ -12,12 +12,3 @@ class BreedForm(FlaskForm):
     class Meta:
         csrf = False
 
-
-@staticmethod
-def listaa():
-    stmt = text("SELECT Rotu.id, Rotu.nimi FROM Account")
-    res = db.engine.execute(stmt)
-
-    for row in res:
-        print(row[0])
-        print(row[1])
