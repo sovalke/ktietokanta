@@ -10,6 +10,8 @@
 
 <h2>Pentueen eläimet</h2>
 
-<p>{{ pentue.pennut }}</p>
+{% for pentu in pentue.pennut %}
+<p>{{ pentu.nimi }}</p>
+{% endfor %}
 
 {% endblock %}
