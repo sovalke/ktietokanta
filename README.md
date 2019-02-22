@@ -8,10 +8,10 @@ Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat si
 - Rekisteröityminen
 - Kirjautuminen
 - Pentueen lisääminen, muokkaaminen ja poistaminen
-- Eläimen lisääminen, muokkaaminen ja poistaminen [ominaisuuden laatiminen kesken]
+- Eläimen lisääminen, muokkaaminen ja poistaminen [työn alla]
 - Rodun lisääminen, muokkaaminen ja poistaminen
 - Kasvattajan omien tietojen muokkaaminen
-- Hakutoiminnot:
+- Hakutoiminnot [työn alla]:
   - hae eläintä tai pentuetta kasvattajan, syntymäajan, rodun tai alueen mukaan
   - hae kasvattajaa nimen, alueen tai kasvatettavien rotujen mukaan
 
