@@ -7,7 +7,7 @@ class Elain(Base):
 
     sukupuoli = db.Column(db.String(144), nullable=False)
     varitys = db.Column(db.String(144), nullable=False)
-    rotu = db.Column(db.Integer, db.ForeignKey('rotu.id'), cascade="all, delete-orphan",
+    rotu = db.Column(db.Integer, db.ForeignKey('rotu.id'),
                            nullable=True)
 
     def __init__(self, nimi, sukupuoli, varitys, rotu):

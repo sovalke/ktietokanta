@@ -6,6 +6,7 @@ from sqlalchemy import update
 
 from application.breeds.forms import BreedForm
 from application.breeds.models import Rotu
+from application.animals.models import Elain
 
 # Vain ylläpitäjä voi lisätä uusia rotuja.
 @app.route("/rodut/lisaa/")
@@ -34,6 +35,17 @@ def rotu_lisaa():
 @login_required(role="ADMIN")
 def rotu_poista(rotu):
     poistettava = Rotu.query.get(rotu)
+
+    if poistettava.id == 1:
+        return redirect(url_for("rotu_index"))
+    
+    tyhjennettavatElaimet = Elain.query.filter(Elain.rotu==poistettava.id)
+    
+
+    for elain in tyhjennettavatElaimet:
+        elain.rotu = 1
+        db.session().commit()
+
     db.session.delete(poistettava)
     db.session().commit()
   
