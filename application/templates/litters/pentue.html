@@ -22,6 +22,9 @@
     </tr>
 
 </table>
+{% if current_user.is_authenticated %}
+<p><a href="{{ url_for('pentue_muokkaa', pentue=pentue.id) }}"">Muokkaa pentueen tietoja</a></p>
+{% endif %}
 
 <h3>Pentueen eläimet</h3>
 
