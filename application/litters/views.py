@@ -102,9 +102,6 @@ def pentu_lomake(pentue):
     form.pentu.choices = [(g.id, g.nimi) for g in Elain.query.order_by('nimi')]
     return render_template("litters/lisaapentu.html", pentue = Pentue.query.get(pentue), form = form)
 
-#    db.session().add(t)
-#    db.session().commit()
-
 @app.route("/pentueet/<pentue>/lisaapentu/", methods=["POST"])
 @login_required()
 def pentu_lisaa(pentue):
@@ -115,12 +112,12 @@ def pentu_lisaa(pentue):
         return render_template("litters/lisaapentu.html", form = form)
 
     lisattava = request.form.get("pentu")
-    t = Pentue.query.get(pentue)
-    t.pennut.append(Elain.query.get(lisattava))
+    pentue = Pentue.query.get(pentue)
+    pentue.pennut.append(Elain.query.get(lisattava))
 
     db.session().commit()
   
-    return redirect(url_for("pentue_yksi", pentue = t.id))
+    return redirect(url_for("pentue_yksi", pentue = pentue.id))
 
 # Vain ylläpitäjä voi poistaa pentueita.
 @app.route("/pentueet/poista<pentue_id>/", methods=["POST"])
@@ -141,6 +138,10 @@ def pentue_index():
 
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
-    t = Pentue.query.get(pentue)
-    return render_template("litters/pentue.html", pentue = t, ema = Elain.query.get(t.ema), isa = Elain.query.get(t.isa), kasvattaja = User.query.get(t.kasvattaja))
+    pentue = Pentue.query.get(pentue)
+    ema = Elain.query.get(pentue.ema)
+    isa = Elain.query.get(pentue.isa)
+    kasvattaja = User.query.get(pentue.kasvattaja)
+
+    return render_template("litters/pentue.html", pentue = pentue, ema = ema, isa = isa, kasvattaja = kasvattaja)
 
