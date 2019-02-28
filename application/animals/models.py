@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from sqlalchemy.sql import text
 
 class Elain(Base):
 
@@ -21,3 +22,25 @@ class Elain(Base):
 
     def is_active(self):
         return True
+
+    @staticmethod
+    def listaaElaimet():
+        stmt = text("SELECT Elain.id AS elain_id, Elain.nimi AS elain_nimi,"
+        " Elain.sukupuoli AS elain_sukupuoli, Elain.varitys AS elain_varitys, Rotu.id AS rotu_id,"
+        " Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja"
+        " FROM Elain"
+        " LEFT JOIN Rotu ON Rotu.id = Elain.rotu"
+        " ORDER BY rotu_nimi")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"elain_id": row[0], 
+            "elain_nimi": row[1], 
+            "elain_sukupuoli": row[2], 
+            "elain_varitys": row[3],
+            "rotu_id": row[4], 
+            "rotu_nimi": row[5], 
+            "rotu_linja": row[6]})
+
+        return response

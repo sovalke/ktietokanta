@@ -31,14 +31,14 @@ def elain_lisaa():
 
     print( request.form )
 
-    t = Elain(
+    lisattava = Elain(
         request.form.get("nimi"),
         request.form.get("sukupuoli"),
         request.form.get("varitys"),
         request.form.get("rotu")
     )
 
-    db.session().add(t)
+    db.session().add(lisattava)
     db.session().commit()
   
     return redirect(url_for("elain_index"))
@@ -46,8 +46,4 @@ def elain_lisaa():
 
 @app.route("/elaimet", methods=["GET"])
 def elain_index():
-    stmt = text("SELECT Elain.id, Elain.nimi, Elain.sukupuoli, Elain.varitys, Rotu.id AS rotu_id, Rotu.nimi AS rotu_nimi, Rotu.linja"
-    " FROM Elain"
-    " LEFT JOIN Rotu ON Rotu.id = Elain.rotu")
-    res = db.engine.execute(stmt)
-    return render_template("animals/elainlista.html", elaimet = res)
+    return render_template("animals/elainlista.html", elaimet = Elain.listaaElaimet())
