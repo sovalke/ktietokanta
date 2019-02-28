@@ -11,6 +11,7 @@ from application.auth.forms import LoginForm
 from application.animals.forms import AnimalForm
 from application.animals.models import Elain
 
+# Lisää eläin
 @app.route("/elaimet/lisaa/")
 @login_required()
 def elain_lomake():
@@ -19,6 +20,7 @@ def elain_lomake():
 
     return render_template("animals/lisaaelain.html", form = form)
 
+# Lisää eläin
 @app.route("/elaimet/lisaa/", methods=["POST"])
 @login_required()
 def elain_lisaa():
