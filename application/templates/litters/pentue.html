@@ -2,17 +2,43 @@
 
 {% block body %}
 
-<p>Pentue: {{ pentue.nimi }}</p>
-<p>Emä: {{ ema.nimi }}</p>
-<p>Isä: {{ isa.nimi }}</p>
-<p>Syntynyt: {{ pentue.syntynyt }}</p>
-<p>Kasvattaja: {{ kasvattaja.nimi }}</p>
+<h2>{{ pentue.nimi }}</h2>
+<table class="table">
+    <tr>
+        <td>Emä:</td>
+        <td>{{ ema.nimi }}</td>
+    </tr>
+    <tr>
+        <td>Isä:</td>
+        <td>{{ isa.nimi }}</td>
+    </tr>
+    <tr>
+        <td>Syntynyt:</td>
+        <td>{{ pentue.syntynyt }}</td>
+    </tr>
+    <tr>
+        <td>Kasvattaja:</td>
+        <td>{{ kasvattaja.nimi }}</td>
+    </tr>
 
-<h2>Pentueen eläimet</h2>
+</table>
 
-{% for pentu in pentue.pennut %}
-<p>{{ pentu.nimi }}</p>
-{% endfor %}
+<h3>Pentueen eläimet</h3>
+
+<table class="table">
+    <tr>
+    <th>Nimi</th>
+    <th>Rotu</th>
+    <th>Sukupuoli</th>
+    </tr>
+        {% for pentu in pentue.pennut %}
+        <tr>
+        <td>{{ pentu.nimi }}</td>
+        <td>{{ pentu.sukupuoli }}</td>
+        <td>{{ pentu.rotu }}</td>
+    </tr>
+        {% endfor %}
+</table>
 
 {% if current_user.is_authenticated %}
 <p><a href="{{ url_for('pentu_lisaa', pentue=pentue.id) }}"">Lisää pentu</a></p>
