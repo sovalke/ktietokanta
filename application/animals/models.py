@@ -5,8 +5,8 @@ class Elain(Base):
 
     __tablename__ = "elain"
 
-    sukupuoli = db.Column(db.String(144), nullable=False)
-    varitys = db.Column(db.String(144), nullable=False)
+    sukupuoli = db.Column(db.String(10), nullable=False)
+    varitys = db.Column(db.String(200), nullable=False)
     rotu = db.Column(db.Integer, db.ForeignKey('rotu.id'),
                            nullable=True)
 

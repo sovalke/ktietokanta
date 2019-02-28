@@ -8,7 +8,7 @@ from application.breeds.models import Rotu
 class AnimalForm(FlaskForm):
     nimi = StringField("Eläimen nimi", [validators.Length(min=2, max=200)])
     sukupuoli = SelectField(u'Sukupuoli', choices=[
-                            ('uros', 'uros'), ('naaras', 'naaras')])
+                            ('naaras', 'naaras'), ('uros', 'uros')])
     varitys = StringField("Väritys", [validators.Length(max=200)])    
     
     rotu = SelectField( u'Rotu', coerce=int)
