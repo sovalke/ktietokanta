@@ -36,12 +36,3 @@ class User(Base):
     
     def roles(self):
         return [self.role]
-    
-    @dynamicmethod
-    def find_breeds():
-        stmt = text("SELECT DISTINCT Rotu.nimi AS rotu, Kasvattaja.nimi AS kasvattaja FROM Kasvattaja, Pentue, Pennut, Elain, Rotu WHERE Kasvattaja.id = Pentue.kasvattaja AND Pentue.id = Pennut.pentue AND Pennut.elain = Elain.id AND Elain.rotu = Rotu.id AND Kasvattaja.id = 3")
-        res = db.engine.execute(stmt)
-        
-        for row in res:
-            print(row[0])
-            print(row[1])
