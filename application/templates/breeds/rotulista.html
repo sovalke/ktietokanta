@@ -16,7 +16,7 @@
       <td>
           {{ rotu.linja }}
       </td>
-      {% if current_user.is_authenticated %}
+      {% if current_user.role == "ADMIN" %}
       <td>
           <a href="{{ url_for('rotu_muokkaa_yksi', rotu=rotu.id) }}">Muokkaa</a>
         </td>
