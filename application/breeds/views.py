@@ -23,9 +23,9 @@ def rotu_lisaa():
     if not form.validate():
         return render_template("breeds/lisaarotu.html", form = form)
 
-    t = Rotu(request.form.get("nimi"), request.form.get("linja"), request.form.get("kuvaus"))
+    lisattava = Rotu(request.form.get("nimi"), request.form.get("linja"), request.form.get("kuvaus"))
 
-    db.session().add(t)
+    db.session().add(lisattava)
     db.session().commit()
   
     return redirect(url_for("rotu_index"))
@@ -40,7 +40,6 @@ def rotu_poista(rotu):
         return redirect(url_for("rotu_index"))
     
     tyhjennettavatElaimet = Elain.query.filter(Elain.rotu==poistettava.id)
-    
 
     for elain in tyhjennettavatElaimet:
         elain.rotu = 1
@@ -56,13 +55,13 @@ def rotu_poista(rotu):
 @login_required(role="ADMIN")
 def rotu_muokkaa(rotu):
     form = BreedForm(request.form)
-    t = Rotu.query.get(rotu)
-    t.nimi = request.form.get("nimi")
-    t.linja = request.form.get("linja")
-    t.kuvaus = request.form.get("kuvaus")
+    muokattava = Rotu.query.get(rotu)
+    muokattava.nimi = request.form.get("nimi")
+    muokattava.linja = request.form.get("linja")
+    muokattava.kuvaus = request.form.get("kuvaus")
 
     if not form.validate():
-        return render_template("breeds/rotu_muokkaus_yksi.html", rotu = t, form = form)
+        return render_template("breeds/rotu_muokkaus_yksi.html", rotu = muokattava, form = form)
 
     db.session().commit()
   
@@ -73,18 +72,18 @@ def rotu_muokkaa(rotu):
 @login_required(role="ADMIN")
 def rotu_muokkaa_yksi(rotu):
     form = BreedForm(request.form)
-    t = Rotu.query.get(rotu)
+    muokattava = Rotu.query.get(rotu)
 
     if request.method == 'GET':
-        form.nimi.data = t.nimi
-        form.linja.data = t.linja
+        form.nimi.data = muokattava.nimi
+        form.linja.data = muokattava.linja
 
     if not form.validate():
-        return render_template("breeds/rotu_muokkaus_yksi.html", form = form, rotu = t)
+        return render_template("breeds/rotu_muokkaus_yksi.html", form = form, rotu = muokattava)
 
-    return render_template("breeds/rotu_muokkaus_yksi.html", rotu=t, form = form)
+    return render_template("breeds/rotu_muokkaus_yksi.html", rotu=muokattava, form = form)
 
-
+# Rotulistaus
 @app.route("/rodut", methods=["GET"])
 def rotu_index():
     return render_template("breeds/rotulista.html", rodut = Rotu.query.all())
