@@ -5,6 +5,7 @@ from flask_login import login_required
 from application import app, db
 from application.auth.models import User
 from application.auth.forms import LoginForm, BreederForm
+from sqlalchemy.sql import text
 
 
 @app.route("/auth/login", methods=["GET", "POST"])
@@ -13,7 +14,6 @@ def auth_login():
         return render_template("auth/kirjautuminen.html", form=LoginForm())
 
     form = LoginForm(request.form)
-    # mahdolliset validoinnit
 
     user = User.query.filter_by(
         username=form.username.data, password=form.password.data).first()
@@ -77,13 +77,11 @@ def kasvattaja_muokkaa(kasvattaja):
     return redirect(url_for("kasvattaja_index"))
 
 @app.route("/kasvattajat/<kasvattaja_id>/muokkaa/", methods=["GET"])
-#@tarkistakayttaja(kasvattaja)
 @login_required
 def kasvattaja_muokkaa_yksi(kasvattaja_id):
     if current_user.id != int(kasvattaja_id):
-        return "sinulla ei ole oikeuksia lukea tätä ja me tyylitellään tämä sivu myöhemmin hienoksi"
+        return "Sinulla ei ole oikeuksia lukea tätä."
     
-
     kasvattaja = User.query.get(kasvattaja_id)
     if request.method == 'GET':
         form = BreederForm(obj=kasvattaja)
@@ -108,4 +106,7 @@ def kasvattaja_muokkaa_yksi(kasvattaja_id):
 
 @app.route("/kasvattajat", methods=["GET"])
 def kasvattaja_index():
-    return render_template("auth/kasvattajalista.html", kasvattajat=User.query.all())
+    stmt = text("SELECT nimi, (SELECT count(*) from Pentue where Pentue.kasvattaja = Kasvattaja.id) as pentueita, (SELECT count(*) from Pennut where Pentue in (SELECT id FROM Pentue WHERE Kasvattaja = Kasvattaja.id)) AS pentuja FROM Kasvattaja")
+    res = db.engine.execute(stmt)
+
+    return render_template("auth/kasvattajalista.html", kasvattajat=res)

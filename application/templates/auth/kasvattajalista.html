@@ -5,8 +5,9 @@
   <table>
     <tr>
       <th>Kasvattajanimi</th>
-      <th>Yhteyshenkilö</th>
-      <th>Puhelinnumero</th>
+      <th>Pentueet</th>
+      <th>Pennut</th>
+      <th>Rodut</th>
     </tr>
     {% for kasvattaja in kasvattajat %}
     
@@ -15,10 +16,10 @@
         {{ kasvattaja.nimi }}
       </td>
       <td>
-        {{ kasvattaja.yhteyshlo }}
+        {{ kasvattaja.pentueita }}
       </td>
       <td>
-        {{ kasvattaja.puh }}
+        {{ kasvattaja.pentuja }}
       </td>
     </tr>
     {% endfor %}
