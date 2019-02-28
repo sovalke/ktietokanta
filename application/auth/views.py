@@ -55,7 +55,7 @@ def kasvattaja_lisaa():
     return redirect(url_for("rotu_index"))
 
 # Tietojen muokkaus
-@app.route("/kasvattajat/<kasvattaja>/muokkaa/", methods=["POST"])
+@app.route("/kasvattaja/<kasvattaja>/muokkaa/", methods=["POST"])
 def kasvattaja_muokkaa(kasvattaja):
     form = BreederForm(request.form)
 
@@ -78,7 +78,7 @@ def kasvattaja_muokkaa(kasvattaja):
     return redirect(url_for("kasvattaja_index"))
 
 # Tietojen muokkaus
-@app.route("/kasvattajat/<kasvattaja_id>/muokkaa/", methods=["GET"])
+@app.route("/kasvattaja/<kasvattaja_id>/muokkaa/", methods=["GET"])
 @login_required
 def kasvattaja_muokkaa_yksi(kasvattaja_id):
     if current_user.id != int(kasvattaja_id):
