@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<h2>{{ pentue.nimi }}</h2>
+<h2>{{ kasvattaja.nimi }} {{ pentue.nimi }}</h2>
 <table class="table">
     <tr>
         <td>Emä:</td>
@@ -31,8 +31,8 @@
 <table class="table">
     <tr>
     <th>Nimi</th>
-    <th>Rotu</th>
     <th>Sukupuoli</th>
+    <th>Rotu</th>
     </tr>
         {% for pentu in pentue.pennut %}
         <tr>
