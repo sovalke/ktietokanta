@@ -2,6 +2,24 @@
 
 {% block body %}
   <p>
-    Tervetuloa rotulistaukseen!
+    Tervetuloa kasvattajatietokantaan!
   </p>
+
+  {% if tilasto is defined %}
+  <h2>Tilastot</h2>
+  
+    {% for luku in tilasto %}
+      <p>Kasvattajia yhteensä: {{luku.kasvattaja}}</p>
+      <p>Pentueita: {{ luku.pentue }}</p>
+      <p>Eläimiä: {{ luku.elain }}</p>
+      <p>Rotuja: {{ luku.rotu }}</p>
+
+
+      <h3>Pentueita, joissa ei vielä eläimiä</h3>
+      <p>Hmm!</p>
+    {% endfor %}
+  
+  {% endif %}
+
+
 {% endblock %}
