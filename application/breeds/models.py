@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 class Rotu(Base):
     __tablename__ = "rotu"
 
-    linja = db.Column(db.String(144), nullable=False)
+    linja = db.Column(db.String(150), nullable=False)
     kuvaus = db.Column(db.String(500))
 
     def __init__(self, nimi, linja, kuvaus):
