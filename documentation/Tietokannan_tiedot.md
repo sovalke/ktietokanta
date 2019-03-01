@@ -20,7 +20,8 @@ Käytännön syistä tietokanta ei täysin noudata normaalimuotoa. Mm. postinume
 
 Tietokannan luomisessa käytettävät CREATE TABLE -lauseet ovat seuraavat.
 
-```CREATE TABLE kasvattaja (
+```
+CREATE TABLE kasvattaja (
 	id INTEGER NOT NULL, 
 	nimi VARCHAR(200) NOT NULL, 
 	username VARCHAR(200) NOT NULL, 
