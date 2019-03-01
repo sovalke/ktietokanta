@@ -29,8 +29,6 @@ def elain_lisaa():
     if not form.validate():
         return render_template("animals/lisaaelain.html", form = form)
 
-    print( request.form )
-
     lisattava = Elain(
         request.form.get("nimi"),
         request.form.get("sukupuoli"),
