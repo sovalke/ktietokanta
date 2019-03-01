@@ -73,3 +73,4 @@ CREATE TABLE rotu (
 	FOREIGN KEY(elain) REFERENCES elain (id), 
 	FOREIGN KEY(pentue) REFERENCES pentue (id)
 )
+```
