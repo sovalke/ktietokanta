@@ -80,20 +80,39 @@ VALUES ('A-pentue', '2002-06-20', '2', '4', '1')
 INSERT INTO pennut (elain, pentue)
 VALUES (eläimen id tähän, pentueen id tähän)
 ```
+Esimerkiksi:
+```
+INSERT INTO pennut (elain, pentue)
+VALUES (2, 2)
+```
 ### Muokkaamistoiminnot
 
 #### Rodun muokkaaminen
 
 ```
 UPDATE Rotu
-    SET linja='Uusi tieto', kuvaus='Uusi kuvaus tähän',
-    WHERE rotu.id = 'päivitettävän rodun id'
+    SET nimi='Uusi tieto', linja='Uusi tieto', kuvaus='Uusi kuvaus tähän',
+    WHERE rotu.id = X
 ```
+X:n tilalle tulee päivitettävän rodun id.
 
 #### Kasvattajan tietojen muokkaaminen
 
-#### Pentueen tietojen muokkaaminen
+```
+UPDATE kasvattaja SET
+puh='Uusi puhelinnumero', email='Uusi sähköposti', osoite='Uusi osoite',
+postinro='Uusi postinumero', toimipaikka='Uusi toimipaikka'
+WHERE kasvattaja.id = X
+```
+X:n kohdalle tulee päivitettävän kasvattajan id.
 
+#### Pentueen tietojen muokkaaminen
+```
+UPDATE pentue SET
+kasvattaja=X, isa=X, ema=X
+WHERE pentue.id = X
+```
+X-merkkien kohdalle tulee aina viitattavan eläimen tai pentueen id.
 
 ### Listaamistoiminnot
 
