@@ -25,7 +25,7 @@ Kasvattajat voivat rekisteröityä ja kirjautua palveluun. Kasvattajat voivat si
 
 ### Linkit
 
-[Tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
+[Tietokannan rakenne sekä tietokantakaavio](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokannan_tiedot.md)
 
 [User storyt](https://github.com/sovalke/ktietokanta/blob/master/documentation/User_storyt.md)
 
