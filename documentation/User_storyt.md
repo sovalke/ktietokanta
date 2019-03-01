@@ -20,9 +20,10 @@
 - Voin poistaa pentueita.
 
 ## User storyihin liittyvät SQL-kyselyt
+Kaikki SQL-kyselyt tuottavat samankaltaisen listauksen kuin sovelluksen www-käyttöliittymässä nähdään.
 
-
-### Uuden peruskäyttäjän lisääminen sovellukseen
+### Lisäystoiminnot
+#### Uuden peruskäyttäjän lisääminen sovellukseen
 
 ```
 INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
@@ -32,9 +33,9 @@ VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
 'postitoimipaikka tähän', 'USER')
 ```
 
-### Lista palveluun rekisteröityneistä kasvattajista
+### Listaamistoiminnot
+#### Lista palveluun rekisteröityneistä kasvattajista
 
-Lista, jossa on mukana myös kunkin kasvattajan pentueiden ja pentujen lukumäärä:
 ```
 SELECT nimi,
 (SELECT count(*) FROM Pentue WHERE Pentue.kasvattaja = Kasvattaja.id) AS pentueita, 
@@ -43,13 +44,13 @@ SELECT nimi,
 Kasvattaja.id AS kasvattaja_id FROM Kasvattaja
 ```
 
-### Lista palvelun roduista
+#### Lista palvelun roduista
 
 ```
 SELECT * FROM Rotu;
 ```
 
-### Lista palvelun pentueista
+#### Lista palvelun pentueista
 
 ```
 SELECT Pentue.id, Pentue.nimi, Pentue.syntynyt,
@@ -58,7 +59,7 @@ FROM Pentue, Kasvattaja
 WHERE Pentue.kasvattaja = Kasvattaja.id
 ```
 
-### Lista palvelun eläimistä
+#### Lista palvelun eläimistä
 
 ```
 SELECT Elain.id AS elain_id, Elain.nimi AS elain_nimi,
