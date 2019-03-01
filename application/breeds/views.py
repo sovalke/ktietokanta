@@ -41,6 +41,7 @@ def rotu_poista(rotu):
     
     tyhjennettavatElaimet = Elain.query.filter(Elain.rotu==poistettava.id)
 
+    # Jos rotu poistetaan, asetetaan eläimen roduksi oletusrotu.
     for elain in tyhjennettavatElaimet:
         elain.rotu = 1
         db.session().commit()

@@ -133,17 +133,17 @@ def pentue_poista(pentue_id):
 # Pentuelistaus
 @app.route("/pentueet", methods=["GET"])
 def pentue_index():
-    stmt = text("SELECT Pentue.id, Pentue.nimi, Pentue.syntynyt, Kasvattaja.id as kasvattaja_id, Kasvattaja.nimi AS kasvattaja_nimi FROM Pentue, Kasvattaja WHERE Pentue.kasvattaja = Kasvattaja.id")
-    res = db.engine.execute(stmt)
-    return render_template("litters/pentuelista.html", pentueet = res)
+    return render_template("litters/pentuelista.html", pentueet = Pentue.haePentueet())
 
 # Yksittäisen pentueen tarkastelu
 @app.route("/pentueet/<pentue>/", methods=["GET"])
 def pentue_yksi(pentue):
+    # Tässä on seita kyselyitä, koska yhden ison kyselyn tekeminen olisi turhan raskasta
+    pennut = Pentue.haeLista(pentue)
     pentue = Pentue.query.get(pentue)
     ema = Elain.query.get(pentue.ema)
     isa = Elain.query.get(pentue.isa)
     kasvattaja = User.query.get(pentue.kasvattaja)
 
-    return render_template("litters/pentue.html", pentue = pentue, ema = ema, isa = isa, kasvattaja = kasvattaja)
+    return render_template("litters/pentue.html", pentue = pentue, pennut=pennut, ema = ema, isa = isa, kasvattaja = kasvattaja)
 
