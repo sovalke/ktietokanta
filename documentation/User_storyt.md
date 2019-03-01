@@ -25,7 +25,7 @@
 #### Uuden peruskäyttäjän lisääminen
 
 ```
-INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro,      toimipaikka, role)
+INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
 VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
     'salasana tähän', 'Yhteyshenkilön nimi tähän', 'puhelinumero tähän',
     'sähköpostiosoite tähän', 'katuosoite tähän', 'postinumero tähän',
@@ -33,7 +33,7 @@ VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
 ```
 Esimerkiksi:
 ```
-INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro,      toimipaikka, role)
+INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
 VALUES ('Testikäyttäjän', 'testitunnus', 'testisalasana', 'Matti meikäläinen',
     '040 123456', 'matti.meikalainen@testi.tes', 'Meikäläisentie 1', '01230',
     'Testilandia', 'USER')
@@ -92,7 +92,7 @@ VALUES (2, 2)
 ```
 UPDATE Rotu SET
     nimi='Uusi tieto', linja='Uusi tieto', kuvaus='Uusi kuvaus tähän',
-    WHERE rotu.id = X
+WHERE rotu.id = X
 ```
 X:n tilalle tulee päivitettävän rodun id.
 
@@ -102,7 +102,7 @@ X:n tilalle tulee päivitettävän rodun id.
 UPDATE kasvattaja SET
     puh='Uusi puhelinnumero', email='Uusi sähköposti', osoite='Uusi osoite',
     postinro='Uusi postinumero', toimipaikka='Uusi toimipaikka'
-    WHERE kasvattaja.id = X
+WHERE kasvattaja.id = X
 ```
 X:n kohdalle tulee päivitettävän kasvattajan id.
 
@@ -110,7 +110,7 @@ X:n kohdalle tulee päivitettävän kasvattajan id.
 ```
 UPDATE pentue SET
     kasvattaja=X, isa=X, ema=X
-    WHERE pentue.id = X
+WHERE pentue.id = X
 ```
 X-merkkien kohdalle tulee aina viitattavan eläimen tai pentueen id.
 
@@ -122,9 +122,9 @@ Kaikki listauskyselyt tuottavat samankaltaisen listauksen kuin sovelluksen www-k
 
 ```
 SELECT nimi,
-(SELECT count(*) FROM Pentue WHERE Pentue.kasvattaja = Kasvattaja.id) AS pentueita, 
-(SELECT count(*) FROM Pennut WHERE Pentue IN(SELECT id
-    FROM Pentue WHERE Kasvattaja = Kasvattaja.id)) AS pentuja,
+    (SELECT count(*) FROM Pentue WHERE Pentue.kasvattaja = Kasvattaja.id) AS pentueita, 
+    (SELECT count(*) FROM Pennut WHERE Pentue
+        IN(SELECT id FROM Pentue WHERE Kasvattaja = Kasvattaja.id)) AS pentuja,
 Kasvattaja.id AS kasvattaja_id FROM Kasvattaja
 ```
 
@@ -138,7 +138,7 @@ SELECT * FROM Rotu;
 
 ```
 SELECT Pentue.id, Pentue.nimi, Pentue.syntynyt,
-Kasvattaja.id as kasvattaja_id, Kasvattaja.nimi AS kasvattaja_nimi
+    Kasvattaja.id as kasvattaja_id, Kasvattaja.nimi AS kasvattaja_nimi
 FROM Pentue, Kasvattaja
 WHERE Pentue.kasvattaja = Kasvattaja.id
 ```
@@ -147,9 +147,9 @@ WHERE Pentue.kasvattaja = Kasvattaja.id
 
 ```
 SELECT Elain.id AS elain_id, Elain.nimi AS elain_nimi,
-Elain.sukupuoli AS elain_sukupuoli, Elain.varitys AS elain_varitys,
-Rotu.id AS rotu_id, Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja,
-COUNT(Elain.id) AS elainMaara FROM Elain
+    Elain.sukupuoli AS elain_sukupuoli, Elain.varitys AS elain_varitys,
+    Rotu.id AS rotu_id, Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja,
+    COUNT(Elain.id) AS elainMaara FROM Elain
 LEFT JOIN Rotu ON Rotu.id = Elain.rotu
 GROUP BY Elain.id
 ORDER BY rotu_nimi
