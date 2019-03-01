@@ -33,10 +33,15 @@ VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
 'postitoimipaikka tähän', 'USER')
 ```
 
-### Lista palvelun kaikista kasvattajista
+### Lista palvelun kaikista kasvattajista sekä ko. kasvattajan pentueiden ja eläinten lukumääristä
 
+Lista, jossa on mukana myös kunkin kasvattajan pentueiden ja pentujen lukumäärä:
 ```
-SELECT * FROM Kasvattaja;
+SELECT nimi,
+(SELECT count(*) FROM Pentue WHERE Pentue.kasvattaja = Kasvattaja.id) AS pentueita, 
+(SELECT count(*) FROM Pennut WHERE Pentue IN(SELECT id
+    FROM Pentue WHERE Kasvattaja = Kasvattaja.id)) AS pentuja,
+Kasvattaja.id AS kasvattaja_id FROM Kasvattaja
 ```
 
 ### Lista palvelun roduista
@@ -53,3 +58,4 @@ Kasvattaja.id as kasvattaja_id, Kasvattaja.nimi AS kasvattaja_nimi
 FROM Pentue, Kasvattaja
 WHERE Pentue.kasvattaja = Kasvattaja.id
 ```
+
