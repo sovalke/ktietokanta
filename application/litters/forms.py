@@ -14,11 +14,5 @@ class LitterForm(FlaskForm):
     isa = SelectField( u'Isä', coerce=int)
     ema = SelectField( u'Emä', coerce=int)
 
-    class Meta:
-        csrf = False
-
 class PupForm(FlaskForm):
     pentu = SelectField( u'Pentu', coerce=int)
-
-    class Meta:
-        csrf = False

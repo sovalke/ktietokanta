@@ -4,9 +4,6 @@ from wtforms import PasswordField, StringField, BooleanField, validators
 class LoginForm(FlaskForm):
     username = StringField("Käyttäjätunnus")
     password = PasswordField("Salasana")
-  
-    class Meta:
-        csrf = False
 
 
 class BreederForm(FlaskForm):

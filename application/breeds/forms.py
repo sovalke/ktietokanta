@@ -9,5 +9,3 @@ class BreedForm(FlaskForm):
     linja = StringField("Jalostuslinja", [validators.Length(max=150)])
     kuvaus = TextAreaField("Kuvaus", [validators.Length(max=500)])
 
-    class Meta:
-        csrf = False

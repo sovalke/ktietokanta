@@ -12,6 +12,3 @@ class AnimalForm(FlaskForm):
     varitys = StringField("Väritys", [validators.Length(max=200)])    
     
     rotu = SelectField( u'Rotu', coerce=int)
-
-    class Meta:
-        csrf = False

@@ -6,6 +6,7 @@
 <p>{{ pentue.nimi }}, {{ pentue.id }}, {{ pentue.syntynyt }}</p>
 
 <form method="POST" action="{{ url_for('pentue_muokkaa', pentue=pentue.id) }}">
+    {{ form.csrf_token }}
     <div class="form-group row">
         {{ form.nimi.label(class_="col-sm-2 col-form-label") }}
         <div class="col-sm-10">
