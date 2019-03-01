@@ -7,10 +7,11 @@
     <th>Kasvattajanimi</th>
     <th>Pentueet</th>
     <th>Pennut</th>
+    <th>Kasvatettavat rodut</th>
   </tr>
 
   {% if kasvattajat is defined %}
-    {% for kasvattaja in kasvattajat %}
+  {% for kasvattaja in kasvattajat %}
   <tr>
     <td>
       {{ kasvattaja.nimi }}
@@ -21,8 +22,15 @@
     <td>
       {{ kasvattaja.pentuja }}
     </td>
+    <td>
+      <ul class="list-inline">
+        {% for rotu in kasvattaja.rodut %}
+        <li class="list-inline-item">{{ rotu.nimi }}</li>
+        {% endfor %}
+      </ul>
+    </td>
   </tr>
-    {% endfor %}
+  {% endfor %}
   {% endif %}
 </table>
 

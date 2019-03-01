@@ -2,6 +2,23 @@ from application import db
 from application.models import Base
 from sqlalchemy.sql import text
 
+def haeRodutKasvattajalle(kasvattaja_id):
+    stmt = text("select distinct rotu.nimi as rotu "
+    " from Rotu"
+    " left join Elain on elain.rotu = rotu.id"
+    " left join pennut on pennut.elain = elain.id"
+    " left join pentue on pentue.id = pennut.pentue"
+    " left join kasvattaja on kasvattaja.id = pentue.kasvattaja"
+    " where kasvattaja.id = :kasvattaja_id").params(kasvattaja_id=kasvattaja_id)
+
+    res = db.engine.execute(stmt)
+
+    response = []
+    for row in res:
+        response.append({"nimi": row[0]})
+
+    return response
+
 class User(Base):
 
     __tablename__ = "kasvattaja"
@@ -38,6 +55,7 @@ class User(Base):
     def roles(self):
         return [self.role]
 
+
     @staticmethod
     def kasvattajaLista():
         stmt = text("SELECT nimi,"
@@ -45,14 +63,43 @@ class User(Base):
         " AS pentueita,"
         " (SELECT count(*) FROM Pennut WHERE Pentue IN"
         " (SELECT id FROM Pentue WHERE Kasvattaja = Kasvattaja.id))"
-        " AS pentuja" 
+        " AS pentuja,"
+        " Kasvattaja.id AS kasvattaja_id" 
         " FROM Kasvattaja")
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"nimi": row[0], 
-            "pentueita": row[1], 
-            "pentuja": row[2]})
+            response.append({
+                "nimi": row[0], 
+                "pentueita": row[1], 
+                "pentuja": row[2],
+                "rodut": haeRodutKasvattajalle(row[3])
+            })
 
         return response
+
+    # def jotain():
+    #     stmt = text("SELECT DISTINCT"
+    #         " Pentue.id, Pentue.nimi AS pentue_nimi, Pentue.syntynyt, rotu.nimi as rotu_nimi,"
+    #         " Kasvattaja.id AS kasvattaja_id, Kasvattaja.nimi AS kasvattaja_nimi,"
+    #         " Pentue.ema AS ema_id,"
+    #         " (SELECT Elain.nimi from Elain where Elain.id = Pentue.ema) as ema_nimi,"
+    #         " Pentue.isa AS isa_id,"
+    #         " (SELECT Elain.nimi from Elain where Elain.id = Pentue.isa) as isa_nimi"
+    #         " FROM Pentue, Kasvattaja"
+    #         " left join Pennut on Pennut.pentue = Pentue.id"
+    #         " left join Elain on Elain.id = Pennut.elain"
+    #         " left join Rotu on Rotu.id = Elain.rotu"
+    #         " WHERE Pentue.kasvattaja = Kasvattaja.id")
+    #     res = db.engine.execute(stmt)
+
+    #     response = []
+    #     for row in res:
+    #         response.append({
+    #             "nimi": row[0], 
+    #             "pentueita": row[1], 
+    #             "pentuja": row[2]
+    #         })
+
+    #     return response

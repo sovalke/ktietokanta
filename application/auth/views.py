@@ -82,6 +82,7 @@ def kasvattaja_muokkaa(kasvattaja):
 @login_required
 def kasvattaja_muokkaa_yksi(kasvattaja_id):
     if current_user.id != int(kasvattaja_id):
+
         return "Sinulla ei ole oikeuksia lukea tätä."
     
     kasvattaja = User.query.get(kasvattaja_id)
@@ -108,5 +109,5 @@ def kasvattaja_muokkaa_yksi(kasvattaja_id):
 # Kasvattajalistaus
 @app.route("/kasvattajat", methods=["GET"])
 def kasvattaja_index():
-
-    return render_template("auth/kasvattajalista.html", kasvattajat=User.kasvattajaLista())
+    kasvattajat = User.kasvattajaLista()
+    return render_template("auth/kasvattajalista.html", kasvattajat=kasvattajat)
