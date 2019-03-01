@@ -41,7 +41,7 @@ def elain_lisaa():
   
     return redirect(url_for("elain_index"))
 
-
+# Eläinten kokoomalista
 @app.route("/elaimet", methods=["GET"])
 def elain_index():
     return render_template("animals/elainlista.html", elaimet = Elain.listaaElaimet())
