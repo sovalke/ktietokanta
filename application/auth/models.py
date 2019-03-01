@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from sqlalchemy.sql import text
 
 class User(Base):
 
@@ -36,3 +37,22 @@ class User(Base):
     
     def roles(self):
         return [self.role]
+
+    @staticmethod
+    def kasvattajaLista():
+        stmt = text("SELECT nimi,"
+        " (SELECT count(*) FROM Pentue WHERE Pentue.kasvattaja = Kasvattaja.id)"
+        " AS pentueita,"
+        " (SELECT count(*) FROM Pennut WHERE Pentue IN"
+        " (SELECT id FROM Pentue WHERE Kasvattaja = Kasvattaja.id))"
+        " AS pentuja" 
+        " FROM Kasvattaja")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"nimi": row[0], 
+            "pentueita": row[1], 
+            "pentuja": row[2]})
+
+        return response

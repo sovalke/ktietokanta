@@ -2,26 +2,28 @@
 
 {% block body %}
 
-  <table class="table">
-    <tr>
-      <th>Kasvattajanimi</th>
-      <th>Pentueet</th>
-      <th>Pennut</th>
-    </tr>
+<table class="table">
+  <tr>
+    <th>Kasvattajanimi</th>
+    <th>Pentueet</th>
+    <th>Pennut</th>
+  </tr>
+
+  {% if kasvattajat is defined %}
     {% for kasvattaja in kasvattajat %}
-    
-    <tr>
-      <td>
-        {{ kasvattaja.nimi }}
-      </td>
-      <td>
-        {{ kasvattaja.pentueita }}
-      </td>
-      <td>
-        {{ kasvattaja.pentuja }}
-      </td>
-    </tr>
+  <tr>
+    <td>
+      {{ kasvattaja.nimi }}
+    </td>
+    <td>
+      {{ kasvattaja.pentueita }}
+    </td>
+    <td>
+      {{ kasvattaja.pentuja }}
+    </td>
+  </tr>
     {% endfor %}
-  </table>
+  {% endif %}
+</table>
 
 {% endblock %}

@@ -108,7 +108,5 @@ def kasvattaja_muokkaa_yksi(kasvattaja_id):
 # Kasvattajalistaus
 @app.route("/kasvattajat", methods=["GET"])
 def kasvattaja_index():
-    stmt = text("SELECT nimi, (SELECT count(*) from Pentue where Pentue.kasvattaja = Kasvattaja.id) as pentueita, (SELECT count(*) from Pennut where Pentue in (SELECT id FROM Pentue WHERE Kasvattaja = Kasvattaja.id)) AS pentuja FROM Kasvattaja")
-    res = db.engine.execute(stmt)
 
-    return render_template("auth/kasvattajalista.html", kasvattajat=res)
+    return render_template("auth/kasvattajalista.html", kasvattajat=User.kasvattajaLista())
