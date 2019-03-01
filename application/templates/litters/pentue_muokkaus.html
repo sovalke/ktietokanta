@@ -2,7 +2,8 @@
 
 {% block body %}
 
-<p>Pentue: {{ pentue.nimi }}, {{ pentue.id }}, {{ pentue.syntynyt }}</p>
+<h2>Muokkaa pentuetta</h2>
+<p>{{ pentue.nimi }}, {{ pentue.id }}, {{ pentue.syntynyt }}</p>
 
 <form method="POST" action="{{ url_for('pentue_muokkaa', pentue=pentue.id) }}">
     <div class="form-group row">

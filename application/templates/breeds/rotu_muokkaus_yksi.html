@@ -2,7 +2,7 @@
 
 {% block body %}
 
-
+<h2>Muokkaa rotua</h2>
 <form method="POST" action="{{ url_for('rotu_muokkaa', rotu=rotu.id) }}">
     <div class="form-group row">
         {{ form.nimi.label(class_="col-sm-2 col-form-label") }}

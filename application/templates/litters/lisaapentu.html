@@ -2,6 +2,7 @@
 
 {% block body %}
 
+<h2>Lisää pentu</h2>
 <p>{{ pentue.nimi }}</p>
 <form method="POST" action="{{ url_for('pentu_lomake', pentue=pentue.id) }}">
     <div class="form-group row">
