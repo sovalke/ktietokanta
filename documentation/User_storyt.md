@@ -25,18 +25,18 @@
 #### Uuden peruskäyttäjän lisääminen
 
 ```
-INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
+INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro,      toimipaikka, role)
 VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
-'salasana tähän', 'Yhteyshenkilön nimi tähän', 'puhelinumero tähän',
-'sähköpostiosoite tähän', 'katuosoite tähän', 'postinumero tähän',
-'postitoimipaikka tähän', 'USER')
+    'salasana tähän', 'Yhteyshenkilön nimi tähän', 'puhelinumero tähän',
+    'sähköpostiosoite tähän', 'katuosoite tähän', 'postinumero tähän',
+    'postitoimipaikka tähän', 'USER')
 ```
 Esimerkiksi:
 ```
-INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
+INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro,      toimipaikka, role)
 VALUES ('Testikäyttäjän', 'testitunnus', 'testisalasana', 'Matti meikäläinen',
-'040 123456', 'matti.meikalainen@testi.tes', 'Meikäläisentie 1', '01230',
-'Testilandia', 'USER')
+    '040 123456', 'matti.meikalainen@testi.tes', 'Meikäläisentie 1', '01230',
+    'Testilandia', 'USER')
 ```
 
 #### Uuden rodun lisääminen
@@ -66,7 +66,7 @@ VALUES ('Mustikka', 'naaras', 'musta', '2')
 ```
 INSERT INTO pentue (nimi, syntynyt, kasvattaja, isa, ema)
 VALUES ('Pentueen nimi tähän', 'syntymäpäivä tähän', 'kasvattajan id tähän',
-'isän id tähän', 'emän id tähän')
+    'isän id tähän', 'emän id tähän')
 ```
 Esimerkiksi:
 ```
@@ -90,8 +90,8 @@ VALUES (2, 2)
 #### Rodun muokkaaminen
 
 ```
-UPDATE Rotu
-    SET nimi='Uusi tieto', linja='Uusi tieto', kuvaus='Uusi kuvaus tähän',
+UPDATE Rotu SET
+    nimi='Uusi tieto', linja='Uusi tieto', kuvaus='Uusi kuvaus tähän',
     WHERE rotu.id = X
 ```
 X:n tilalle tulee päivitettävän rodun id.
@@ -100,17 +100,17 @@ X:n tilalle tulee päivitettävän rodun id.
 
 ```
 UPDATE kasvattaja SET
-puh='Uusi puhelinnumero', email='Uusi sähköposti', osoite='Uusi osoite',
-postinro='Uusi postinumero', toimipaikka='Uusi toimipaikka'
-WHERE kasvattaja.id = X
+    puh='Uusi puhelinnumero', email='Uusi sähköposti', osoite='Uusi osoite',
+    postinro='Uusi postinumero', toimipaikka='Uusi toimipaikka'
+    WHERE kasvattaja.id = X
 ```
 X:n kohdalle tulee päivitettävän kasvattajan id.
 
 #### Pentueen tietojen muokkaaminen
 ```
 UPDATE pentue SET
-kasvattaja=X, isa=X, ema=X
-WHERE pentue.id = X
+    kasvattaja=X, isa=X, ema=X
+    WHERE pentue.id = X
 ```
 X-merkkien kohdalle tulee aina viitattavan eläimen tai pentueen id.
 
