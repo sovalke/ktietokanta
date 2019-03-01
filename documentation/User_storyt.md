@@ -12,7 +12,7 @@
 - Voin kirjautua sisään.
 - Voin muokata omia yhteystietojani.
 - Voin lisätä uusia eläimiä ja pentueita palveluun.
-- Voin muokata ja poistaa eläimiä ja pentueita.
+- Voin muokata pentueita.
 
 ### Ylläpitäjänä lisäksi...
 
@@ -113,6 +113,20 @@ UPDATE pentue SET
 WHERE pentue.id = X
 ```
 X-merkkien kohdalle tulee aina viitattavan eläimen tai pentueen id.
+
+### Poistamistoiminnot
+
+#### Rodun poistaminen
+```
+DELETE FROM rotu WHERE rotu.id = X
+```
+X:n tilalle tulee poistettavan rodun id.
+
+#### Pentueen poistaminen
+```
+DELETE FROM pentue WHERE pentue.id = X
+```
+X:n tilalle tulee poistettavan pentueen id.
 
 ### Listaamistoiminnot
 
