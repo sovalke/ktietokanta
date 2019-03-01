@@ -88,4 +88,11 @@ def rotu_muokkaa_yksi(rotu):
 @app.route("/rodut", methods=["GET"])
 def rotu_index():
     return render_template("breeds/rotulista.html", rodut = Rotu.query.all())
+
+# Yksittäisen rodun tarkastelu
+@app.route("/rodut/<rotu>/", methods=["GET"])
+def rotu_yksi(rotu):
+    rotu = Rotu.query.get(rotu)
+
+    return render_template("breeds/rotu.html", rotu = rotu)
   

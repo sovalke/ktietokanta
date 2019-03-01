@@ -12,7 +12,7 @@
     
     <tr>
       <td>
-          {{ rotu.nimi }}
+          <a href="{{ url_for('rotu_yksi', rotu=rotu.id)}}">{{ rotu.nimi }}</a>
       </td>
       <td>
           {{ rotu.linja }}

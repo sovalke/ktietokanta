@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h2>{{ rotu.nimi }} </h2>
+
+<table class="table">
+    <tr>
+        <th>Jalostuslinja</th>
+        <td>{{ rotu.linja }}</td>
+    </tr>
+    <tr>
+        <th>Rotukuvaus</th>
+        <td>{{ rotu.kuvaus }}</td>
+    </tr>
+</table>
+
+<p><a href="{{ url_for('rotu_index') }} ">Palaa rotulistaukseen</a></p>
+
+{% endblock %}
