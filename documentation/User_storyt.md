@@ -75,6 +75,26 @@ VALUES ('A-pentue', '2002-06-20', '2', '4', '1')
 ```
 *Huom.* Syntymäpäivän on oltava muodossa vvvv-kk-pp.
 
+#### Pennun lisääminen pentueeseen
+```
+INSERT INTO pennut (elain, pentue)
+VALUES (eläimen id tähän, pentueen id tähän)
+```
+### Muokkaamistoiminnot
+
+#### Rodun muokkaaminen
+
+```
+UPDATE Rotu
+    SET linja='Uusi tieto', kuvaus='Uusi kuvaus tähän',
+    WHERE rotu.id = 'päivitettävän rodun id'
+```
+
+#### Kasvattajan tietojen muokkaaminen
+
+#### Pentueen tietojen muokkaaminen
+
+
 ### Listaamistoiminnot
 
 Kaikki listauskyselyt tuottavat samankaltaisen listauksen kuin sovelluksen www-käyttöliittymässä nähdään.
