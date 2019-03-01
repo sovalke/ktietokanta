@@ -14,7 +14,7 @@
   {% for kasvattaja in kasvattajat %}
   <tr>
     <td>
-      {{ kasvattaja.nimi }}
+        <a href="{{ url_for('kasvattaja_yksi', kasvattaja=kasvattaja.id)}}">{{ kasvattaja.nimi }}</a>
     </td>
     <td>
       {{ kasvattaja.pentueita }}
