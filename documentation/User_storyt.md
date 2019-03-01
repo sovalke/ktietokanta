@@ -19,6 +19,10 @@
 - Voin lisätä, muokata ja poistaa tietokannasta rotuja.
 - Voin poistaa pentueita.
 
+## Puuttuvat ominaisuudet
+
+- Eläimen muokkaaminen ja poistaminen
+
 ## User storyihin liittyvät SQL-kyselyt
 
 ### Lisäystoiminnot
