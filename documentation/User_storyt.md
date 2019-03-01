@@ -3,7 +3,8 @@
 ### Vierailijana
 
 - Voin rekisteröityä kasvattajaksi.
-- Voin hakea listan palveluun rekisteröityneistä kasvattajista, roduista, pentueista ja eläimistä.
+- Voin hakea listan palveluun rekisteröityneistä kasvattajista sekä ko. kasvattajan pentueista ja eläimistä.
+- Voin hakea listat roduista, pentueista ja eläimistä.
 - Voin tarkastella kasvattajien, pentueiden ja eläinten perustietoja.
 
 ### Kasvattajana lisäksi...
@@ -20,8 +21,6 @@
 
 ## User storyihin liittyvät SQL-kyselyt
 
-### Uuden kasvattajan lisääminen sovellukseen
-
 
 ### Uuden peruskäyttäjän lisääminen sovellukseen
 
@@ -33,7 +32,7 @@ VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
 'postitoimipaikka tähän', 'USER')
 ```
 
-### Lista palvelun kaikista kasvattajista sekä ko. kasvattajan pentueiden ja eläinten lukumääristä
+### Lista palveluun rekisteröityneistä kasvattajista
 
 Lista, jossa on mukana myös kunkin kasvattajan pentueiden ja pentujen lukumäärä:
 ```
@@ -59,3 +58,14 @@ FROM Pentue, Kasvattaja
 WHERE Pentue.kasvattaja = Kasvattaja.id
 ```
 
+### Lista palvelun eläimistä
+
+```
+SELECT Elain.id AS elain_id, Elain.nimi AS elain_nimi,
+Elain.sukupuoli AS elain_sukupuoli, Elain.varitys AS elain_varitys,
+Rotu.id AS rotu_id, Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja,
+COUNT(Elain.id) AS elainMaara FROM Elain
+LEFT JOIN Rotu ON Rotu.id = Elain.rotu
+GROUP BY Elain.id
+ORDER BY rotu_nimi
+```
