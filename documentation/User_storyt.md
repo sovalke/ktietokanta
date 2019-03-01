@@ -20,10 +20,9 @@
 - Voin poistaa pentueita.
 
 ## User storyihin liittyvät SQL-kyselyt
-Kaikki SQL-kyselyt tuottavat samankaltaisen listauksen kuin sovelluksen www-käyttöliittymässä nähdään.
 
 ### Lisäystoiminnot
-#### Uuden peruskäyttäjän lisääminen sovellukseen
+#### Uuden peruskäyttäjän lisääminen
 
 ```
 INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
@@ -32,8 +31,54 @@ VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
 'sähköpostiosoite tähän', 'katuosoite tähän', 'postinumero tähän',
 'postitoimipaikka tähän', 'USER')
 ```
+Esimerkiksi:
+```
+INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
+VALUES ('Testikäyttäjän', 'testitunnus', 'testisalasana', 'Matti meikäläinen',
+'040 123456', 'matti.meikalainen@testi.tes', 'Meikäläisentie 1', '01230',
+'Testilandia', 'USER')
+```
+
+#### Uuden rodun lisääminen
+
+```
+INSERT INTO rotu (nimi, linja, kuvaus)
+VALUES ('rodun nimi tähän', 'mahdollinen jalostuslinja tähän', 'kuvaus tähän')
+```
+Esimerkiksi:
+```
+INSERT INTO rotu (nimi, linja, kuvaus)
+VALUES ('Hermeliini', '', 'Kaunis pyöreä kanirotu, jolla on vain yksi jalostuslinja.')
+```
+
+#### Uuden eläimen lisääminen
+```
+INSERT INTO elain (nimi, sukupuoli, varitys, rotu)
+VALUES ('Eläimen nimi tähän', 'sukupuoli tähän', 'väritys tähän', 'rodun id tähän')
+```
+Esimerkiksi:
+```
+INSERT INTO elain (nimi, sukupuoli, varitys, rotu)
+VALUES ('Mustikka', 'naaras', 'musta', '2')
+```
+
+#### Uuden pentueen lisääminen
+```
+INSERT INTO pentue (nimi, syntynyt, kasvattaja, isa, ema)
+VALUES ('Pentueen nimi tähän', 'syntymäpäivä tähän', 'kasvattajan id tähän',
+'isän id tähän', 'emän id tähän')
+```
+Esimerkiksi:
+```
+INSERT INTO pentue (nimi, syntynyt, kasvattaja, isa, ema)
+VALUES ('A-pentue', '2002-06-20', '2', '4', '1')
+```
+*Huom.* Syntymäpäivän on oltava muodossa vvvv-kk-pp.
 
 ### Listaamistoiminnot
+
+Kaikki listauskyselyt tuottavat samankaltaisen listauksen kuin sovelluksen www-käyttöliittymässä nähdään.
+
 #### Lista palveluun rekisteröityneistä kasvattajista
 
 ```
