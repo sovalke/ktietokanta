@@ -22,11 +22,12 @@
 
 ### Uuden käyttäjän (kasvattajan) lisääminen tietokantaan
 
-```INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
+```
+INSERT INTO kasvattaja (nimi, username, password, yhteyshlo, puh, email, osoite, postinro, toimipaikka, role)
 VALUES ('kasvattajanimi tähän', 'käyttäjätunnus tähän',
 'salasana tähän', 'Yhteyshenkilön nimi tähän', 'puhelinumero tähän',
 'sähköpostiosoite tähän', 'katuosoite tähän', 'postinumero tähän',
 'postitoimipaikka tähän', 'USER')
 ```
 
-
+*Huom.* Tavallisen käyttäjän sijasta tietokantaan voidaan lisätä uusi ylläpitäjä vaihtamalla role-sarakkeen arvo "USER" arvoon "ADMIN".
