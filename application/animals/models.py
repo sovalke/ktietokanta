@@ -23,13 +23,15 @@ class Elain(Base):
     def is_active(self):
         return True
 
+    # Metodi kaikkien eläinten listaamiseen
     @staticmethod
     def listaaElaimet():
         stmt = text("SELECT Elain.id AS elain_id, Elain.nimi AS elain_nimi,"
         " Elain.sukupuoli AS elain_sukupuoli, Elain.varitys AS elain_varitys, Rotu.id AS rotu_id,"
-        " Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja"
+        " Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja, COUNT(Elain.id) AS elainMaara"
         " FROM Elain"
         " LEFT JOIN Rotu ON Rotu.id = Elain.rotu"
+        " GROUP BY Elain.id"
         " ORDER BY rotu_nimi")
         res = db.engine.execute(stmt)
 
