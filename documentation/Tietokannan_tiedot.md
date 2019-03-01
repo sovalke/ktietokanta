@@ -4,13 +4,13 @@
 
 [Tarkastele tietokantakaaviota tästä](https://github.com/sovalke/ktietokanta/blob/master/documentation/Tietokantakaavio.png)
 
-*Huom.* Sovelluksen toiminnallisuuden vuoksi tietokannassa on erikoinen liitostaulu (Elain-Pennut-Pentue) ja sen rinnalla yhdestä moneen -yhteys (Pentue-Elain).
+*_Huom._* Sovelluksen toiminnallisuuden vuoksi tietokannassa on erikoinen liitostaulu (Elain-Pennut-Pentue) ja sen rinnalla yhdestä moneen -yhteys (Pentue-Elain).
 
 Alun perin tarkoitus oli, että jokaisesta Elain-oliosta olisi viiteavain pentueeseen, johon eläin pennun roolissa kuuluu. Samoin jokaisesta Pentue-oliosta olisi viiteavain kahteen Eläimeen, jotka ovat pentueen emä ja isä.
 
 Tällainen ristiinviittaaminen osoittautui kuitenin SQLAlchemyn voimin erittäin vaikeaksi. Tämän takia Elain- ja Pentue-taulujen välissä on liitostaulu Pennut, joka yhdistää pentueen ja siihen kuuluvat pennut. Alun perin tässä liitostaulussa oli myös pentueen emä ja isä, sillä myös ne ovat Eläin-olioita. Niiden erottaminen pentueen pennuista osoittautui kuitenkin hankalaksi. Todennäköisesti niiden erottelu olisi vaatinut yhden tietokantataulun (ElaintenRoolit) lisää.
 
-*Huom. 2* Käytännön syistä tietokanta ei täysin noudata normaalimuotoa. Mm. postinumero ja -toimipaikka ovat toisteisina samassa taulussa, vaikka ne tulisi tietokannan normalisoinnin yhteydessä jakaa eri tauluiksi (postinumeron perusteella voi aina selvittää toimipaikan ja päinvastoin). Koska postinumero ja postitoimipaikka -toiminnallisuus ei tässä harjoitustyössä ollut keskeinen, jätin nämä sarakkeet samaan tietokantatauluun.
+*_Huom. 2_* Käytännön syistä tietokanta ei täysin noudata normaalimuotoa. Mm. postinumero ja -toimipaikka ovat toisteisina samassa taulussa, vaikka ne tulisi tietokannan normalisoinnin yhteydessä jakaa eri tauluiksi (postinumeron perusteella voi aina selvittää toimipaikan ja päinvastoin). Koska postinumero ja postitoimipaikka -toiminnallisuus ei tässä harjoitustyössä ollut keskeinen, jätin nämä sarakkeet samaan tietokantatauluun.
 
 ### CREATE TABLE -lauseet
 
@@ -67,4 +67,4 @@ CREATE TABLE rotu (
 	pentue INTEGER, 
 	FOREIGN KEY(elain) REFERENCES elain (id), 
 	FOREIGN KEY(pentue) REFERENCES pentue (id)
-)```
+)
