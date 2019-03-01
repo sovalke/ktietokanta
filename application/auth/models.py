@@ -41,7 +41,7 @@ class User(Base):
     # Listataan kasvattajat
     @staticmethod
     def kasvattajaLista():
-        stmt = text("SELECT nimi,"
+        stmt = text("SELECT nimi, id,"
         " (SELECT count(*) FROM Pentue WHERE Pentue.kasvattaja = Kasvattaja.id)"
         " AS pentueita,"
         " (SELECT count(*) FROM Pennut WHERE Pentue IN"
@@ -55,10 +55,34 @@ class User(Base):
         for row in res:
             response.append({
                 "nimi": row[0], 
-                "pentueita": row[1], 
-                "pentuja": row[2],
-                "rodut": haeRodutKasvattajalle(row[3])
+                "id": row[1], 
+                "pentueita": row[2], 
+                "pentuja": row[3],
+                "rodut": haeRodutKasvattajalle(row[4])
             })
+
+        return response
+
+    # Haetaan tietyn kasvattajan tiedot.
+    @staticmethod
+    def haeKasvattaja(kasvattaja_id):
+        stmt = text("SELECT id, nimi, yhteyshlo, email, puh, osoite, postinro, toimipaikka FROM Kasvattaja"
+        " WHERE kasvattaja.id = :kasvattaja_id").params(kasvattaja_id=kasvattaja_id)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({
+                "id": row[0],
+                "nimi": row[1],
+                "yhteyshlo": row[2], 
+                "email": row[3],
+                "puh": row[4],
+                "osoite": row[5],
+                "postinro": row[6],
+                "toimipaikka": row[7]
+                })
 
         return response
 

@@ -111,3 +111,9 @@ def kasvattaja_muokkaa_yksi(kasvattaja_id):
 def kasvattaja_index():
     kasvattajat = User.kasvattajaLista()
     return render_template("auth/kasvattajalista.html", kasvattajat=kasvattajat)
+
+# Yksittäisen kasvattajan tarkastelu
+@app.route("/kasvattajat/<kasvattaja>/", methods=["GET"])
+def kasvattaja_yksi(kasvattaja):
+    kasvattaja = User.haeKasvattaja(kasvattaja)
+    return render_template("auth/kasvattaja.html", kasvattaja = kasvattaja)

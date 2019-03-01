@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if kasvattaja is defined %}
+{% for ks in kasvattaja %}
+<h2>{{ ks.nimi }}</h2>
+
+<table class="table">
+    <tr>
+        <th>Yhteyshenkilö:</th>
+        <td>{{ ks.yhteyshlo }}</td>
+    </tr>
+    <tr>
+        <th>Sähköposti:</th>
+        <td>{{ ks.email }}</td>
+    </tr>
+    <tr>
+        <th>Puhelinnumero:</th>
+        <td>{{ ks.puh }}</td>
+    </tr>
+    <tr>
+        <th>Osoite:</th>
+        <td>{{ ks.osoite }}<br />
+            {{ ks.postinro }} {{ ks.toimipaikka }}
+        </td>
+    </tr>
+</table>
+{% endfor %}
+{% endif %}
+
+<p><a class="nav-link" href="{{ url_for('kasvattaja_index') }} ">Palaa kasvattajalistaukseen</a></p>
+{% endblock %}
