@@ -31,7 +31,7 @@ class Elain(Base):
         " Rotu.nimi AS rotu_nimi, Rotu.linja AS rotu_linja, COUNT(Elain.id) AS elainMaara"
         " FROM Elain"
         " LEFT JOIN Rotu ON Rotu.id = Elain.rotu"
-        " GROUP BY Elain.id"
+        " GROUP BY Elain.id, Rotu.id"
         " ORDER BY rotu_nimi")
         res = db.engine.execute(stmt)
 
