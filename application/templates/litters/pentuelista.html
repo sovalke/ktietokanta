@@ -8,6 +8,8 @@
     <th>Syntymäaika</th>
     <th>Kasvattaja</th>
   </tr>
+  
+  {% if pentueet is defined %}
   {% for pentue in pentueet %}
 
   <tr>
@@ -29,6 +31,7 @@
     {% endif %}
   </tr>
   {% endfor %}
+  {% endif %}
 </table>
 
 {% endblock %}
